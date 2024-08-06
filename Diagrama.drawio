@@ -1,13 +1,13 @@
-<mxfile host="app.diagrams.net" modified="2024-07-01T19:24:20.033Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36" etag="zppZ3NVqVtkhwjYH0KJ5" version="24.6.4" type="github">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36" version="24.7.6">
   <diagram name="Página-1" id="uxQamM1_208eMyhoLgmC">
-    <mxGraphModel dx="2261" dy="2010" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1707" dy="1595" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="vetR4PyFIzgfFQVkprIi-3" value="&lt;b&gt;PELICULA&lt;/b&gt;&lt;div&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;/div&gt;&lt;div&gt;id_pelicula&lt;/div&gt;&lt;div&gt;nombre&lt;/div&gt;&lt;div&gt;estreno&lt;/div&gt;&lt;div&gt;genero&lt;/div&gt;&lt;div&gt;id_oscarsFK&lt;/div&gt;&lt;div&gt;id_directorFK&lt;/div&gt;&lt;div&gt;id_actorFK&lt;/div&gt;&lt;div&gt;id_estudioFK&lt;/div&gt;&lt;div&gt;paisFK&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="vetR4PyFIzgfFQVkprIi-3" value="&lt;b&gt;Turno&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="320" y="310" width="120" height="180" as="geometry" />
         </mxCell>
-        <mxCell id="vetR4PyFIzgfFQVkprIi-4" value="&lt;b&gt;ESTUDIO&lt;/b&gt;&lt;br&gt;&lt;div&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;/div&gt;&lt;div&gt;id_estudio&lt;/div&gt;&lt;div&gt;nombre&lt;/div&gt;&lt;div&gt;peliculaFK&lt;/div&gt;&lt;div&gt;inicio de activades&lt;/div&gt;&lt;div&gt;vigente&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="vetR4PyFIzgfFQVkprIi-4" value="&lt;b&gt;ESTUDIOS&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="320" y="680" width="120" height="160" as="geometry" />
         </mxCell>
         <mxCell id="vetR4PyFIzgfFQVkprIi-6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;curved=0;endArrow=ERoneToMany;endFill=0;" parent="1" source="vetR4PyFIzgfFQVkprIi-5" target="vetR4PyFIzgfFQVkprIi-3" edge="1">
@@ -19,7 +19,7 @@
         <mxCell id="vetR4PyFIzgfFQVkprIi-5" value="PRODUCE" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="340" y="540" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="vetR4PyFIzgfFQVkprIi-8" value="&lt;b&gt;ACTOR/ACTRIZ&lt;/b&gt;&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;id_actor&lt;/div&gt;&lt;div&gt;nombre&lt;/div&gt;&lt;div&gt;apellido&lt;/div&gt;&lt;div&gt;fecha nacimiento&lt;/div&gt;&lt;div&gt;peliculasFK&lt;/div&gt;&lt;div&gt;OscarsFK&lt;/div&gt;&lt;div&gt;directorFK&lt;/div&gt;&lt;div&gt;paisFK&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="vetR4PyFIzgfFQVkprIi-8" value="&lt;b&gt;Recepcionista&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="640" y="320" width="120" height="160" as="geometry" />
         </mxCell>
         <mxCell id="vetR4PyFIzgfFQVkprIi-10" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;curved=0;endArrow=ERoneToMany;endFill=0;" parent="1" source="vetR4PyFIzgfFQVkprIi-9" target="vetR4PyFIzgfFQVkprIi-3" edge="1">
@@ -31,7 +31,7 @@
         <mxCell id="vetR4PyFIzgfFQVkprIi-9" value="ACTUA" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="500" y="360" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="vetR4PyFIzgfFQVkprIi-12" value="&lt;b&gt;Oscars&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="vetR4PyFIzgfFQVkprIi-12" value="&lt;b&gt;Paciente&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="320" y="-40" width="120" height="160" as="geometry" />
         </mxCell>
         <mxCell id="vetR4PyFIzgfFQVkprIi-14" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;curved=0;endArrow=ERzeroToOne;endFill=0;" parent="1" source="vetR4PyFIzgfFQVkprIi-13" target="vetR4PyFIzgfFQVkprIi-19" edge="1">
@@ -125,7 +125,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="vetR4PyFIzgfFQVkprIi-26" value="&lt;b&gt;DIRECTOR&lt;/b&gt;&lt;br&gt;&lt;div&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;/div&gt;&lt;div&gt;nombre&lt;/div&gt;&lt;div&gt;fecha de nacimiento&lt;/div&gt;&lt;div&gt;peliculaFK&lt;/div&gt;&lt;div&gt;OscarsFK&lt;/div&gt;&lt;div&gt;id_actoresFK&lt;/div&gt;&lt;div&gt;id_estudio&lt;/div&gt;&lt;div&gt;paisFK&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="vetR4PyFIzgfFQVkprIi-26" value="&lt;b&gt;Extracionista&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry y="320" width="120" height="160" as="geometry" />
         </mxCell>
         <mxCell id="vetR4PyFIzgfFQVkprIi-28" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=0;endArrow=ERoneToMany;endFill=0;" parent="1" source="vetR4PyFIzgfFQVkprIi-27" target="vetR4PyFIzgfFQVkprIi-3" edge="1">
@@ -204,16 +204,16 @@
         <mxCell id="vetR4PyFIzgfFQVkprIi-51" value="GANA" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="570" y="-280" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="suCoeefHjJXsmYRzDSxb-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=ERzeroToMany;endFill=0;startArrow=ERmandOne;startFill=0;" edge="1" parent="1" source="vetR4PyFIzgfFQVkprIi-30" target="suCoeefHjJXsmYRzDSxb-1">
+        <mxCell id="suCoeefHjJXsmYRzDSxb-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=ERzeroToMany;endFill=0;startArrow=ERmandOne;startFill=0;" parent="1" source="vetR4PyFIzgfFQVkprIi-30" target="suCoeefHjJXsmYRzDSxb-1" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="60" y="680" as="sourcePoint" />
             <mxPoint x="60" y="480" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="suCoeefHjJXsmYRzDSxb-1" value="TIENE" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="suCoeefHjJXsmYRzDSxb-1" value="TIENE" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="20" y="500" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="suCoeefHjJXsmYRzDSxb-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;curved=0;startArrow=ERmandOne;startFill=0;endArrow=ERzeroToMany;endFill=0;" edge="1" parent="1" source="vetR4PyFIzgfFQVkprIi-30" target="suCoeefHjJXsmYRzDSxb-3">
+        <mxCell id="suCoeefHjJXsmYRzDSxb-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;curved=0;startArrow=ERmandOne;startFill=0;endArrow=ERzeroToMany;endFill=0;" parent="1" source="vetR4PyFIzgfFQVkprIi-30" target="suCoeefHjJXsmYRzDSxb-3" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="-60" y="760" />
@@ -222,19 +222,19 @@
             <mxPoint x="320" y="40" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="suCoeefHjJXsmYRzDSxb-3" value="TIENE" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="suCoeefHjJXsmYRzDSxb-3" value="TIENE" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="-100" y="390" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="suCoeefHjJXsmYRzDSxb-5" value="TIENE" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="suCoeefHjJXsmYRzDSxb-5" value="TIENE" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="350" y="900" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="suCoeefHjJXsmYRzDSxb-7" value="GANA" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="suCoeefHjJXsmYRzDSxb-7" value="GANA" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="590" y="100" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="suCoeefHjJXsmYRzDSxb-8" value="GANA" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="suCoeefHjJXsmYRzDSxb-8" value="GANA" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry y="-240" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="suCoeefHjJXsmYRzDSxb-9" value="GANA" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="suCoeefHjJXsmYRzDSxb-9" value="GANA" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="-70" y="-110" width="80" height="80" as="geometry" />
         </mxCell>
       </root>
