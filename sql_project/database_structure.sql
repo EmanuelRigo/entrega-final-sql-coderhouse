@@ -1,43 +1,40 @@
 -- BORRAMOS DB POR SI EXISTE 
-DROP DATABASE IF EXISTS peliculas_coderhouse;
+DROP DATABASE IF EXISTS laboratorio_coderhouse;
 
 -- CREAMOS DB
-CREATE DATABASE peliculas_coderhouse;
+CREATE DATABASE laboratorio_coderhouse;
 
 -- USAMOS LA DB
-USE peliculas_coderhouse;
+USE laboratorio_coderhouse;
 
--- TABLA PELICULA
+-- CREACION DE TABLAS
+
 CREATE TABLE 
-	PELICULA (
-		id_pelicula INT PRIMARY KEY AUTO_INCREMENT,
-		nombre VARCHAR(150) NOT NULL COMMENT 'nombre de la pelicula',
-		estreno DATETIME DEFAULT NULL COMMENT 'fecha de estreno de la pelicula',
-		genero VARCHAR(60) DEFAULT 'DESCONOCIDO' COMMENT 'genero de la pelicula',
-		id_oscar INT COMMENT 'puede tener varios oscars una pelicula',
-		id_estudio INT NOT NULL COMMENT 'puede estar producida por varios estudios',
-		cod_pais VARCHAR(3) NOT NULL COMMENT 'supongamos que una pelicula solo se filma en un solo pais'
+	dueño (
+		dni INT PRIMARY KEY NOT NULL,
+		nombre VARCHAR(80),
+		apellido VARCHAR(80)
+	)
+
+CREATE TABLE 
+	laboratorio (
+		id_laboratorio INT PRIMARY KEY AUTO_INCREMENT,
+		ubicacion VARCHAR(100),
+		id_dueño INT,
+		resultado
 	);
 
--- TABLA ESTUDIO
-CREATE TABLE 
-	ESTUDIO (
-		id_estudio INT PRIMARY KEY AUTO_INCREMENT,
-		nombre VARCHAR(200) NOT NULL,
-		inicio_de_actividades DATETIME DEFAULT NULL COMMENT 'año en que fundo el estudio',
-		vigente BOOLEAN DEFAULT TRUE NOT NULL COMMENT 'tenemos en cuenta si el estudio sigue en funcionamiento'
-	);
-
--- TABLA ACTOR/ACTRIZ
 CREATE TABLE
-	ACTOR_ACTRIZ (
-		id_actor INT PRIMARY KEY AUTO_INCREMENT,
-		nombre VARCHAR(50) NOT NULL,
-		apellido VARCHAR(100) NOT NULL,
-		nacimiento DATETIME,
-		id_oscar INT COMMENT 'un actor o actriz tambien puede tener un oscar de mejor director, pero no de mejor pelicula',
-		cod_pais VARCHAR(3)
-	);
+	bioquimico (
+		dni INT PRIMARY KEY NOT NULL,
+		nombre VARCHAR(80) NOT NULL,
+		apellido VARCHAR(80) NULL,
+		fecha_de_nacimiento DATETIME,
+		telefono INT,
+		matricula INT NOT NULL UNIQUE
+	)
+
+
 	
 -- TABLA DIRECTOR
 CREATE TABLE 
