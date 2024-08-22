@@ -75,54 +75,34 @@ CREATE TABLE
 
 CREATE TABLE
 	talon (
-		id_turno
-		id_laboratorio
-		id_recepcionista
-		id_pago
+		id_turno INT NOT NULL,
+		id_laboratorio INT NOT NULL,
+		id_recepcionista INT NOT NULL,
+		id_pago INT NOT NULL
 	)
 
 CREATE TABLE 
 	resultado (
-		id_orden
-		completo
-		id_bioquimico
+		id_orden INT NOT NULL,
+		completo BOOLEAN DEFAULT FALSE,
+		id_bioquimico INT NOT NULL
 	)
 
-CREATE TABLE 
-	pago (
-		id_pago
-		precio
-		tipo
-	)
+CREATE TABLE pago (
+    id_pago INT AUTO_INCREMENT PRIMARY KEY,
+    precio INT NOT NULL,
+    tipo ENUM('tarjeta debito', 'billetera virtual', 'efectivo')
+);
 
 CREATE TABLE
 	turno (
-		id_turno
-		fecha_y_hora
-		dni_paciente
-		estudio
-		id_tecnico
+		id_turno INT AUTO_INCREMENT NOT_NULL,
+		fecha_y_hora DATETIME,
+		dni_paciente INT NOT NULL,
+		estudio VARCHAR(80),
+		id_tecnico INT NOT NULL
 	)
 
-
-
--- TABLA DIRECTOR_PELICULA para relacion muchos a muchos entre DIRECTOR y PELICULA
-CREATE TABLE DIRECTOR_PELICULA (
-    id_director INT,
-    id_pelicula INT,
-    PRIMARY KEY (id_director, id_pelicula),
-    FOREIGN KEY (id_director) REFERENCES DIRECTOR (id_director),
-    FOREIGN KEY (id_pelicula) REFERENCES PELICULA (id_pelicula)
-);
-
--- TABLA ACTOR_PELICULA para relacion muchos a muchos entre ACTOR_ACTRIZ y PELICULA
-CREATE TABLE ACTOR_PELICULA (
-    id_actor INT,
-    id_pelicula INT,
-    PRIMARY KEY (id_actor, id_pelicula),
-    FOREIGN KEY (id_actor) REFERENCES ACTOR_ACTRIZ (id_actor),
-    FOREIGN KEY (id_pelicula) REFERENCES PELICULA (id_pelicula)
-);
 
 
 
