@@ -9,6 +9,7 @@ USE laboratorio_coderhouse;
 
 -- CREACION DE TABLAS
 
+-- TABLAS DIMENCIONALES
 CREATE TABLE 
 	dueño (
 		dni INT PRIMARY KEY NOT NULL,
@@ -34,36 +35,76 @@ CREATE TABLE
 		matricula INT NOT NULL UNIQUE
 	)
 
+CREATE TABLE
+	tecnico (
+		dni INT PRIMARY KEY NOT NULL,
+		nombre VARCHAR(80) NOT NULL,
+		apellido VARCHAR(80) NULL,
+		fecha_de_nacimiento DATETIME,
+		telefono INT,
+		matricula INT NOT NULL UNIQUE
+	)
 
-	
--- TABLA DIRECTOR
-CREATE TABLE 
-	DIRECTOR (
-		id_director INT PRIMARY KEY AUTO_INCREMENT,
-		nombre VARCHAR (100),
-		apellido VARCHAR (100),
-		nacimiento DATETIME,
-		id_oscar INT COMMENT 'un director puede tener un oscar a mejor actor'
-	);
-	
--- TABLA OSCAR
-CREATE TABLE 
-	OSCAR(
-		id_oscar INT PRIMARY KEY AUTO_INCREMENT,
-		edicion DATETIME NOT NULL COMMENT 'año en que se entrego el oscar',
-		id_pelicula INT NOT NULL,
-		tipo ENUM("mejor_pelicula","mejor_director","mejor_actor","mejor_actriz") NOT NULL,
-        FOREIGN KEY (id_pelicula) REFERENCES PELICULA (id_pelicula)
-	);
+CREATE TABLE
+	tecnico (
+		dni INT PRIMARY KEY NOT NULL,
+		nombre VARCHAR(80) NOT NULL,
+		apellido VARCHAR(80) NULL,
+		fecha_de_nacimiento DATETIME,
+		telefono INT,
+	)
 
--- TABLA PAIS
+CREATE TABLE
+	estudio (
+		nombre VARCHAR(80),
+		precio INT NOT NULL
+	)
+
+CREATE TABLE
+	paciente (
+		dni INT PRIMARY KEY NOT NULL UNIQUE,
+		nombre VARCHAR(80),
+		apellido VARCHAR(80),
+		fecha_de_nacimiento DATETIME,
+		telefono INT,
+		domicilio VARCHAR(150),
+		email VARCHAR(80),
+	)
+
+-- TABLAS DE HECHOS
+
+CREATE TABLE
+	talon (
+		id_turno
+		id_laboratorio
+		id_recepcionista
+		id_pago
+	)
+
 CREATE TABLE 
-	PAIS (
-		cod_pais VARCHAR (3) PRIMARY KEY NOT NULL,
-		nombre VARCHAR (100) NOT NULL,
-		name VARCHAR (100),
-		continente VARCHAR (50)
-	);
+	resultado (
+		id_orden
+		completo
+		id_bioquimico
+	)
+
+CREATE TABLE 
+	pago (
+		id_pago
+		precio
+		tipo
+	)
+
+CREATE TABLE
+	turno (
+		id_turno
+		fecha_y_hora
+		dni_paciente
+		estudio
+		id_tecnico
+	)
+
+
 
 -- TABLA DIRECTOR_PELICULA para relacion muchos a muchos entre DIRECTOR y PELICULA
 CREATE TABLE DIRECTOR_PELICULA (
@@ -84,18 +125,6 @@ CREATE TABLE ACTOR_PELICULA (
 );
 
 
--- -- TABLA MEJORES_ACTORES
--- CREATE TABLE MEJORES_ACTORES (
---     id_actor INT PRIMARY KEY,
---     nombre VARCHAR(50) NOT NULL,
---     apellido VARCHAR(100) NOT NULL,
---     nacimiento DATETIME,
---     id_pelicula INT NOT NULL,
---     id_oscar INT NOT NULL,
---     fecha_de_oscar DATETIME,
---     FOREIGN KEY (id_actor) REFERENCES ACTOR_ACTRIZ (id_actor),
---     FOREIGN KEY (id_pelicula) REFERENCES PELICULA (id_pelicula)
--- );
 
 CREATE TABLE TOP_5_PELICULAS (
     id_pelicula INT PRIMARY KEY,
