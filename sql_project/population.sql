@@ -19,17 +19,17 @@ INSERT INTO dueño
         (15421745, 'juan', 'coderhouse');
 
 INSERT INTO laboratorio 
-    (ubicacion, telefono) VALUES
+    (sucursal, telefono) VALUES
         ('Flores','4477-5514'), ('San Justo','4488-2211'), ('Caballito','4487-5902');
 
-INSERT INTO bioquimico (dni, nombre, apellido, fecha_de_nacimiento, telefono, ubicacion, matricula)
+INSERT INTO bioquimico (dni, nombre, apellido, fecha_de_nacimiento, telefono, sucursal, matricula)
 VALUES 
 (23456789, 'Mariana', 'Gómez', '1985-04-12', '123456789', 'Flores', 1001),
 (34567890, 'Carlos', 'López', '1978-09-23', '987654321', 'San Justo', 1002),
 (45678901, 'Ana', 'Pérez', '1990-11-05', '456123789', 'Caballito', 1003),
 (56789012, 'Jorge', 'Martínez', '1982-06-17', '321654987', 'Flores', 1004);
 
-INSERT INTO tecnico (dni, nombre, apellido, fecha_de_nacimiento, telefono, ubicacion, matricula)
+INSERT INTO tecnico (dni, nombre, apellido, fecha_de_nacimiento, telefono, sucursal, matricula)
 VALUES
 (12965438, 'Carlos', 'González', '1984-06-15', '1145678901', 'Flores', 189034),
 (23568123, 'María', 'López', '1991-09-20', '1156789012', 'San Justo', 290134),
@@ -47,7 +47,7 @@ VALUES
 (54678901, 'Marta', 'Castro', '1975-02-15', '1189012345', 'San Justo', 104920),
 (65789012, 'Pedro', 'Ortiz', '1981-09-14', '1190123456', 'Caballito', 117832);
 
-INSERT INTO recepcionista (dni, nombre, apellido, fecha_de_nacimiento, ubicacion, telefono)
+INSERT INTO recepcionista (dni, nombre, apellido, fecha_de_nacimiento, sucursal, telefono)
 VALUES
 (30567891, 'Valeria', 'Méndez', '1989-11-14', 'Flores', '1145678901'),
 (41890712, 'Camila', 'Domínguez', '1993-02-05', 'San Justo', '1156789012'),

@@ -1,3 +1,5 @@
+use laboratorio_coderhouse;
+
 DELIMITER //
 
 CREATE TRIGGER before_insert_bioquimico
@@ -6,18 +8,52 @@ FOR EACH ROW
 BEGIN
     DECLARE temp_legajo INT;
 
-    -- Inserta la persona en la tabla 'personal'
     INSERT INTO personal (nombre, apellido, fecha_de_nacimiento, telefono, email, dni, sucursal, puesto, matricula)
     VALUES (NEW.nombre, NEW.apellido, NEW.fecha_de_nacimiento, NEW.telefono, CONCAT(NEW.nombre, '@correo.com'), NEW.dni, NEW.sucursal, 'Bioquímico', NEW.matricula);
     
-    -- Obtén el legajo recién generado
     SET temp_legajo = LAST_INSERT_ID();
     
-    -- Asigna el legajo generado al campo legajo de bioquimico
     SET NEW.legajo = temp_legajo;
 END //
 
 DELIMITER ;
+
+DELIMITER //
+
+CREATE TRIGGER before_insert_tecnico
+BEFORE INSERT ON tecnico
+FOR EACH ROW
+BEGIN
+    DECLARE temp_legajo INT;
+
+    INSERT INTO personal (nombre, apellido, fecha_de_nacimiento, telefono, email, dni, sucursal, puesto, matricula)
+    VALUES (NEW.nombre, NEW.apellido, NEW.fecha_de_nacimiento, NEW.telefono, CONCAT(NEW.nombre, '@correo.com'), NEW.dni, NEW.sucursal, 'Técnico', NEW.matricula);
+    
+    SET temp_legajo = LAST_INSERT_ID();
+    
+    SET NEW.legajo = temp_legajo;
+END //
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE TRIGGER before_insert_recepcionista
+BEFORE INSERT ON recepcionista
+FOR EACH ROW
+BEGIN
+    DECLARE temp_legajo INT;
+
+    INSERT INTO personal (nombre, apellido, fecha_de_nacimiento, telefono, email, dni, sucursal, puesto)
+    VALUES (NEW.nombre, NEW.apellido, NEW.fecha_de_nacimiento, NEW.telefono, CONCAT(NEW.nombre, '@correo.com'), NEW.dni, NEW.sucursal, 'Recepcionista');
+    
+    SET temp_legajo = LAST_INSERT_ID();
+
+    SET NEW.legajo = temp_legajo;
+END //
+
+DELIMITER ;
+
 
 
 
