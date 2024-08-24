@@ -22,7 +22,7 @@ CREATE TABLE
 CREATE TABLE 
 	laboratorio (
 		id_laboratorio INT PRIMARY KEY AUTO_INCREMENT,
-		ubicacion VARCHAR(30) UNIQUE,
+		sucursal VARCHAR(30) UNIQUE,
 		id_dueño INT NOT NULL DEFAULT 15421745,
 		telefono VARCHAR(15)
 	);
@@ -35,8 +35,9 @@ CREATE TABLE
 		apellido VARCHAR(80) NULL,
 		fecha_de_nacimiento DATE,
 		telefono VARCHAR(15),
-		ubicacion ENUM ('Flores', 'San Justo', 'Caballito'),
-		matricula INT PRIMARY KEY 
+		sucursal ENUM ('Flores', 'San Justo', 'Caballito'),
+		matricula INT UNIQUE NOT NULL,
+		email VARCHAR(100)
 	);
 
 CREATE TABLE
@@ -47,8 +48,9 @@ CREATE TABLE
 		apellido VARCHAR(80) NULL,
 		fecha_de_nacimiento DATE,
 		telefono VARCHAR(15),
-		ubicacion ENUM ('Flores', 'San Justo', 'Caballito'),
-		matricula INT NOT NULL UNIQUE
+		sucursal ENUM ('Flores', 'San Justo', 'Caballito'),
+		matricula INT NOT NULL UNIQUE,
+		email VARCHAR(100)
 	);
 
 CREATE TABLE
@@ -58,8 +60,10 @@ CREATE TABLE
 		nombre VARCHAR(80) NOT NULL,
 		apellido VARCHAR(80) NULL,
 		fecha_de_nacimiento DATE,
-		ubicacion ENUM ('Flores', 'San Justo', 'Caballito'),
-		telefono VARCHAR(15)
+		sucursal ENUM ('Flores', 'San Justo', 'Caballito'),
+		telefono VARCHAR(15),
+		email VARCHAR(100)
+
 	);
 
 CREATE TABLE
@@ -81,16 +85,16 @@ CREATE TABLE
 
 CREATE TABLE 
 	personal (
-		legajo INT NOT NULL UNIQUE,
+		legajo INT AUTO_INCREMENT PRIMARY KEY,
 		nombre VARCHAR(80),
 		apellido VARCHAR(80),
 		fecha_de_nacimiento DATE,
 		telefono VARCHAR(15),
-		domicilio VARCHAR(60),
 		email VARCHAR(50),
-		dni INT UNIQUE,
+		dni INT UNIQUE NOT NULL,
 		sucursal VARCHAR(30),
-		puesto VARCHAR (40)
+		puesto VARCHAR (40),
+		matricula INT
 	);
 
 -- TABLAS DE HECHOS
@@ -106,7 +110,7 @@ CREATE TABLE
 CREATE TABLE 
 	resultado (
 		id_resultado INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-		ubicacion ENUM ('Flores', 'San Justo', 'Caballito'),
+		sucursal ENUM ('Flores', 'San Justo', 'Caballito'),
 		completo BOOLEAN DEFAULT FALSE,
 		id_bioquimico INT NOT NULL
 	);
@@ -148,7 +152,7 @@ ALTER TABLE laboratorio
 
 ALTER TABLE resultado
 	ADD CONSTRAINT fk_bioquimico FOREIGN KEY
-	(id_bioquimico) REFERENCES bioquimico(matricula);
+	(id_bioquimico) REFERENCES bioquimico(legajo);
 
 ALTER TABLE talon
 	ADD CONSTRAINT fk_laboratorio FOREIGN KEY
@@ -171,5 +175,17 @@ ALTER TABLE turno
 
 ALTER TABLE personal
 	ADD CONSTRAINT fk_sucursal FOREIGN KEY
-	(sucursal) REFERENCES laboratorio(ubicacion);
+	(sucursal) REFERENCES laboratorio(sucursal);
 
+
+ALTER TABLE bioquimico
+ADD CONSTRAINT fk_personal_bioquimico
+FOREIGN KEY (legajo) REFERENCES personal(legajo);
+
+ALTER TABLE tecnico
+ADD CONSTRAINT fk_personal_tecnico
+FOREIGN KEY (legajo) REFERENCES personal(legajo);
+
+ALTER TABLE recepcionista
+ADD CONSTRAINT fk_personal_recepcionista
+FOREIGN KEY (legajo) REFERENCES personal(legajo);

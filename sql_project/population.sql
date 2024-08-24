@@ -1,14 +1,18 @@
 -- USAMOS LA DB
 USE laboratorio_coderhouse;
 
--- SET GLOBAL local_infile = true;
+SET GLOBAL local_infile = 1;
 
--- LOAD DATA  LOCAL INFILE '/sql_project/data/paises.csv'
--- INTO TABLE pais
--- FIELDS TERMINATED BY ','  ENCLOSED BY '"'
--- LINES TERMINATED BY '\n'
--- IGNORE 1 ROWS
--- (nombre,name,cod_pais,continente);
+LOAD DATA LOCAL INFILE '/sql_project/data/estudios.csv'
+INTO TABLE estudio
+FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(nombre, precio);
+
+SHOW GLOBAL VARIABLES LIKE 'local_infile';
+
+SELECT * FROM estudio;
 
 INSERT INTO dueño 
     (dni, nombre, apellido) VALUES 
