@@ -1,0 +1,46 @@
+dni,nombre,apellido,fecha_de_nacimiento,telefono,domicilio,email
+10123456,Juan,Perez,1980-01-15,15-7733-2498,Avenida Corrientes 1234,juan.perez@hotmail.com
+10234567,Maria,Gomez,1992-03-22,4345-5345,Calle Florida 567,maria.gomez@live.com
+10345678,Carlos,Lopez,1985-05-30,15-6789-0134,Avenida Santa Fe 890,carlos.lopez@outlook.com
+10456789,Lucia,Fernandez,1978-07-19,4932-1023,Calle San Martín 456,lucia.fernandez@hotmail.com
+10567890,Roberto,Gonzalez,1990-11-25,15-8765-4321,Avenida Rivadavia 789,roberto.gonzalez@live.com
+10678901,Laura,Ramirez,1983-02-02,4782-6543,Calle Lavalle 1010,laura.ramirez@outlook.com
+10789012,Jose,Sanchez,1995-06-16,15-3214-9987,Avenida Belgrano 1122,jose.sanchez@hotmail.com
+10890123,Sofia,Diaz,1988-09-28,4115-8899,Calle Córdoba 1313,sofia.diaz@live.com
+10901234,Diego,Martinez,1975-12-04,15-5566-7788,Avenida de Mayo 1414,diego.martinez@outlook.com
+11012345,Valentina,Hernandez,1993-04-14,4801-2233,Calle Tucumán 1515,valentina.hernandez@hotmail.com
+11123456,Fernando,Alvarez,1982-08-23,15-1234-5678,Avenida Callao 1616,fernando.alvarez@live.com
+11234567,Martina,Garcia,1991-10-10,4833-4455,Calle Entre Ríos 1717,martina.garcia@outlook.com
+11345678,Matias,Morales,1987-03-08,15-9876-5432,Avenida Independencia 1818,matias.morales@hotmail.com
+11456789,Florencia,Ortiz,1984-07-17,4956-7788,Calle Maipú 1919,florencia.ortiz@live.com
+11567890,Ignacio,Dominguez,1996-11-21,15-6655-9988,Avenida Pueyrredón 2020,ignacio.dominguez@outlook.com
+11678901,Camila,Flores,1989-01-05,4211-3344,Calle Alberdi 2121,camila.flores@hotmail.com
+11789012,Nicolas,Cruz,1981-05-25,15-4321-1234,Avenida Juan B. Justo 2222,nicolas.cruz@live.com
+11890123,Daniela,Silva,1994-09-12,4388-7766,Calle Suipacha 2323,daniela.silva@outlook.com
+11901234,Julian,Mendez,1986-12-15,15-1111-2222,Avenida Corrientes 2424,julian.mendez@hotmail.com
+12012345,Alejandra,Castro,1979-03-30,4399-8877,Calle Defensa 2525,alejandra.castro@live.com
+12123456,Martin,Reyes,1992-06-22,15-3344-5566,Avenida Callao 2626,martin.reyes@outlook.com
+12234567,Paula,Peralta,1985-10-05,4902-8899,Calle Ayacucho 2727,paula.peralta@hotmail.com
+12345678,Esteban,Acosta,1981-08-09,15-7777-8888,Avenida 9 de Julio 2828,esteban.acosta@live.com
+12456789,Victoria,Rios,1993-11-19,4789-1122,Calle Tucumán 2929,victoria.rios@outlook.com
+12567890,Adrian,Vega,1988-04-02,15-2345-6789,Avenida Córdoba 3030,adrian.vega@hotmail.com
+12678901,Romina,Blanco,1977-12-24,4677-3344,Calle Florida 3131,romina.blanco@live.com
+12789012,Enrique,Farias,1984-05-17,15-9999-0000,Avenida Las Heras 3232,enrique.farias@outlook.com
+12890123,Carolina,Nunez,1995-07-21,4778-9900,Calle San Juan 3333,carolina.nunez@hotmail.com
+12901234,Facundo,Sosa,1980-11-13,15-8765-5432,Avenida Libertador 3434,facundo.sosa@live.com
+13012345,Natalia,Vallejos,1990-02-06,4987-5544,Calle Balcarce 3535,natalia.vallejos@outlook.com
+13123456,Pedro,Pineda,1987-09-09,15-2345-4321,Avenida Corrientes 3636,pedro.pineda@hotmail.com
+13234567,Eliana,Quinteros,1978-07-28,4521-6677,Calle Chacabuco 3737,eliana.quinteros@live.com
+13345678,Maximiliano,Franco,1991-06-15,15-9988-7766,Avenida Rivadavia 3838,maximiliano.franco@outlook.com
+13456789,Micaela,Ferrari,1983-03-27,4953-2233,Calle Viamonte 3939,micaela.ferrari@hotmail.com
+13567890,Andres,Cabrera,1994-10-12,15-9876-5432,Avenida Callao 4040,andres.cabrera@live.com
+13678901,Sabrina,Figueroa,1976-01-18,4310-4455,Calle Moreno 4141,sabrina.figueroa@outlook.com
+13789012,Rodrigo,Montes,1985-08-25,15-8765-4321,Avenida Belgrano 4242,rodrigo.montes@hotmail.com
+13890123,Milagros,Gutierrez,1993-12-01,4890-6677,Calle Paraguay 4343,milagros.gutierrez@live.com
+13901234,Luis,Molina,1979-02-22,15-1234-5678,Avenida San Juan 4444,luis.molina@outlook.com
+14012345,Antonella,Navarro,1987-04-29,4523-5566,Calle Maipú 4545,antonella.navarro@hotmail.com
+14123456,Bautista,Castillo,1996-11-11,15-9988-8877,Avenida Independencia 4646,bautista.castillo@live.com
+14234567,Celeste,Ibanez,1981-05-06,4700-3344,Calle Piedras 4747,celeste.ibanez@outlook.com
+14345678,Ezequiel,Suarez,1990-07-30,15-2233-4455,Avenida Alem 4848,ezequiel.suarez@hotmail.com
+14456789,Julieta,Aguilar,1989-09-16,4655-6677,Calle Salta 4949,julieta.aguilar@live.com
+14567890,Lorenzo,Bustos,1982-10-03,15-4455-6677,Avenida Entre Ríos 5050,lorenzo.bustos@outlook.com

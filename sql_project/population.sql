@@ -10,6 +10,13 @@ LINES TERMINATED BY '\n'
 IGNORE 1 ROWS
 (nombre, precio);
 
+LOAD DATA LOCAL INFILE '/sql_project/data/pacientes.csv'
+INTO TABLE paciente
+FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(dni,nombre,apellido,fecha_de_nacimiento,telefono,domicilio,email);
+
 SHOW GLOBAL VARIABLES LIKE 'local_infile';
 
 SELECT * FROM estudio;
