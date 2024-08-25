@@ -109,10 +109,11 @@ CREATE TABLE
 
 CREATE TABLE 
 	resultado (
-		id_resultado INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+		id_resultado VARCHAR(105) PRIMARY KEY,
 		sucursal ENUM ('Flores', 'San Justo', 'Caballito'),
 		completo BOOLEAN DEFAULT FALSE,
-		id_bioquimico INT NOT NULL
+		id_bioquimico INT NOT NULL,
+        FOREIGN KEY (id_bioquimico) REFERENCES bioquimico(legajo)
 	);
 
 CREATE TABLE pago (
@@ -127,23 +128,23 @@ CREATE TABLE
 		id_turno INT AUTO_INCREMENT PRIMARY KEY,
 		fecha_y_hora DATETIME NOT NULL,
 		dni_paciente INT NOT NULL,
-		resultado INT,
 		id_tecnico INT NOT NULL
 	);
 
 
 -- TABLAS DE MUCHOS A MUCHOS
 
-CREATE TABLE
-	turno_estudio (
-		estudio VARCHAR(80) NOT NULL,
-		id_turno INT NOT NULL,
-		PRIMARY KEY (id_turno, estudio),
-		FOREIGN KEY (id_turno) REFERENCES turno(id_turno),
-    	FOREIGN KEY (estudio) REFERENCES estudio(nombre)
-	);
+CREATE TABLE turno_estudio (
+    estudio VARCHAR(80) NOT NULL,
+    id_turno INT NOT NULL,
+    turno_estudio VARCHAR(105) PRIMARY KEY,
+    FOREIGN KEY (id_turno) REFERENCES turno(id_turno),
+    FOREIGN KEY (estudio) REFERENCES estudio(nombre)
+);
+
 
 -- AGREGANDO FOREIGN KEY
+
 
 ALTER TABLE laboratorio
 	ADD CONSTRAINT fk_dueño FOREIGN KEY 
@@ -151,7 +152,9 @@ ALTER TABLE laboratorio
 
 ALTER TABLE resultado
 	ADD CONSTRAINT fk_bioquimico FOREIGN KEY
-	(id_bioquimico) REFERENCES bioquimico(legajo);
+	(id_bioquimico) REFERENCES bioquimico(legajo),
+	ADD CONSTRAINT fk_resultado_turno FOREIGN KEY
+	(id_resultado) REFERENCES turno_estudio(turno_estudio);
 
 ALTER TABLE talon
 	ADD CONSTRAINT fk_laboratorio FOREIGN KEY
@@ -167,9 +170,7 @@ ALTER TABLE turno
 	ADD CONSTRAINT fk_paciente FOREIGN KEY
 	(dni_paciente) REFERENCES paciente(dni),
 	ADD CONSTRAINT fk_tecnico FOREIGN KEY
-	(id_tecnico) REFERENCES tecnico(legajo),
-	ADD CONSTRAINT fk_resultado FOREIGN KEY
-	(resultado) REFERENCES resultado(id_resultado)
+	(id_tecnico) REFERENCES tecnico(legajo)
 	;
 
 ALTER TABLE personal

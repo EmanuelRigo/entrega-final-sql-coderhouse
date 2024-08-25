@@ -3,14 +3,14 @@ USE laboratorio_coderhouse;
 
 SET GLOBAL local_infile = 1;
 
-LOAD DATA LOCAL INFILE '/sql_project/data/estudios.csv'
+LOAD DATA LOCAL INFILE 'C:/Users/emanu/Documents/Repositories/entrega-final-sql-coderhouse/sql_project/data/estudios.csv'
 INTO TABLE estudio
 FIELDS TERMINATED BY ',' ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS
 (nombre, precio);
 
-LOAD DATA LOCAL INFILE '/sql_project/data/pacientes.csv'
+LOAD DATA LOCAL INFILE 'C:/Users/emanu/Documents/Repositories/entrega-final-sql-coderhouse/sql_project/data/pacientes.csv'
 INTO TABLE paciente
 FIELDS TERMINATED BY ',' ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
@@ -20,6 +20,7 @@ IGNORE 1 ROWS
 SHOW GLOBAL VARIABLES LIKE 'local_infile';
 
 SELECT * FROM estudio;
+SELECT * FROM paciente;
 
 INSERT INTO dueño 
     (dni, nombre, apellido) VALUES 
@@ -35,6 +36,12 @@ VALUES
 (34567890, 'Carlos', 'López', '1978-09-23', '987654321', 'San Justo', 1002),
 (45678901, 'Ana', 'Pérez', '1990-11-05', '456123789', 'Caballito', 1003),
 (56789012, 'Jorge', 'Martínez', '1982-06-17', '321654987', 'Flores', 1004);
+
+select * from bioquimico;
+select * from personal;
+select * from tecnico;
+select * from recepcionista;
+
 
 INSERT INTO tecnico (dni, nombre, apellido, fecha_de_nacimiento, telefono, sucursal, matricula)
 VALUES
@@ -63,3 +70,6 @@ VALUES
 (74890213, 'Martín', 'Sánchez', '1988-09-25', 'San Justo', '1189012345'),
 (85214367, 'Romina', 'Vega', '1992-06-12', 'Caballito', '1190123456'),
 (96783456, 'Diego', 'Navarro', '1987-01-08', 'Flores', '1101234567');
+
+select * from personal;
+select * from bioquimico;

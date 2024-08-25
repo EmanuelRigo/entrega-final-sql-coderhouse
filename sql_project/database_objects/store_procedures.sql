@@ -61,8 +61,8 @@ BEGIN
     SET v_id_pago = LAST_INSERT_ID();
 
     -- Crear un nuevo turno con la fecha especificada (sin segundos)
-    INSERT INTO turno (fecha_y_hora, dni_paciente, resultado, id_tecnico) 
-    VALUES (p_fecha_turno, p_dni_paciente, NULL, p_id_tecnico);
+    INSERT INTO turno (fecha_y_hora, dni_paciente,  id_tecnico) 
+    VALUES (p_fecha_turno, p_dni_paciente, p_id_tecnico);
     SET v_id_turno = LAST_INSERT_ID();
 
     -- Insertar en la tabla talon con los nuevos IDs
@@ -102,8 +102,6 @@ DELIMITER ;
 
 
 
-
-
 select * from recepcionista;
 select * from estudio;
 select * from tecnico;
@@ -112,6 +110,8 @@ select * from pago;
 select * from turno;
 select * from turno_estudio;
 select * from talon;
+select * from personal;
+select * from resultado;
 
 select * from turno_estudio where id_turno like 1;
 
