@@ -127,7 +127,6 @@ CREATE TABLE
 		id_turno INT AUTO_INCREMENT PRIMARY KEY,
 		fecha_y_hora DATETIME NOT NULL,
 		dni_paciente INT NOT NULL,
-		estudio VARCHAR(80),
 		resultado INT,
 		id_tecnico INT NOT NULL
 	);
