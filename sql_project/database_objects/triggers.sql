@@ -58,6 +58,8 @@ DELIMITER ;
 
 
 
+
+
 -- -- Triggers
 
 -- -- este trigger suma a una tabla aparte los mejores actores de cada año
