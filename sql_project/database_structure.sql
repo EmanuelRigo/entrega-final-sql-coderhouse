@@ -112,7 +112,7 @@ CREATE TABLE
 		id_resultado VARCHAR(105) PRIMARY KEY,
 		sucursal ENUM ('Flores', 'San Justo', 'Caballito'),
 		completo BOOLEAN DEFAULT FALSE,
-		id_bioquimico INT NOT NULL,
+		id_bioquimico INT,
         FOREIGN KEY (id_bioquimico) REFERENCES bioquimico(legajo)
 	);
 

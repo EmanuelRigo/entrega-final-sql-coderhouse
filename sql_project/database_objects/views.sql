@@ -1,42 +1,67 @@
-USE peliculas_coderhouse;
+USE laboratorio_coderhouse;
 
--- Vistas
+CREATE VIEW turnos_pendientes AS
+SELECT 
+    t.id_turno,
+    t.fecha_y_hora,
+    p.nombre AS nombre_paciente,
+    p.apellido AS apellido_paciente,
+    e.nombre AS nombre_estudio,
+    tec.nombre AS nombre_tecnico,
+    tec.apellido AS apellido_tecnico,
+    r.completo AS resultado_completo
+FROM 
+    turno t
+JOIN 
+    turno_estudio te ON t.id_turno = te.id_turno
+JOIN 
+    paciente p ON t.dni_paciente = p.dni
+JOIN 
+    estudio e ON te.estudio = e.nombre
+LEFT JOIN 
+    resultado r ON te.turno_estudio = r.id_resultado
+JOIN 
+    tecnico tec ON t.id_tecnico = tec.legajo
+WHERE 
+    r.completo = FALSE OR r.completo IS NULL;
 
--- vista de los actores que tienen peliculas en los 90
 
-CREATE OR REPLACE VIEW view_actores_90 AS
-    SELECT DISTINCT 
-        aa.id_actor, 
-        aa.nombre, 
-        aa.apellido, 
-        aa.nacimiento, 
-        aa.cod_pais,
-        p.nombre AS nombre_pelicula
-    FROM ACTOR_ACTRIZ aa
-    JOIN ACTOR_PELICULA ap ON aa.id_actor = ap.id_actor
-    JOIN PELICULA p ON ap.id_pelicula = p.id_pelicula
-    WHERE p.estreno BETWEEN '1990-01-01' AND '1999-12-31';
 
-SELECT * FROM view_actores_90;
+CREATE VIEW pagos_por_tipo_y_fecha AS
+SELECT 
+    p.fecha_de_pago,
+    p.tipo AS tipo_pago,
+    COUNT(p.id_pago) AS cantidad_pagos,
+    SUM(p.precio) AS total_pagado
+FROM 
+    pago p
+GROUP BY 
+    p.fecha_de_pago, p.tipo
+ORDER BY 
+    p.fecha_de_pago DESC, p.tipo;
 
--- vista de las peliculas con mas Oscars
+ CREATE VIEW detalles_pacientes_estudios_completos AS
+SELECT 
+    p.dni AS dni_paciente,
+    p.nombre AS nombre_paciente,
+    p.apellido AS apellido_paciente,
+    p.telefono AS telefono_paciente,
+    t.fecha_y_hora AS fecha_turno,
+    e.nombre AS nombre_estudio,
+    r.id_resultado
+FROM 
+    paciente p
+JOIN 
+    turno t ON p.dni = t.dni_paciente
+JOIN 
+    turno_estudio te ON t.id_turno = te.id_turno
+JOIN 
+    estudio e ON te.estudio = e.nombre
+LEFT JOIN 
+    resultado r ON r.id_resultado = t.id_turno
+WHERE 
+    r.completo = TRUE;
 
-CREATE OR REPLACE VIEW view_peliculas_con_mas_oscars AS
-    SELECT p.id_pelicula, p.nombre, COUNT(o.id_oscar) AS total_oscars
-    FROM PELICULA p
-    JOIN OSCAR o ON p.id_pelicula = o.id_pelicula
-    GROUP BY p.id_pelicula, p.nombre
-    ORDER BY total_oscars DESC
-    LIMIT 10;
+  
 
-SELECT * FROM view_peliculas_con_mas_oscars;
-
--- vista de peliculas por pais
-
-CREATE OR REPLACE VIEW peliculas_por_pais AS
-    SELECT p.cod_pais, COUNT(p.id_pelicula) AS total_peliculas
-    FROM PELICULA p
-    GROUP BY p.cod_pais
-    ORDER BY total_peliculas DESC;
-
- SELECT * FROM peliculas_por_pais; 
+select * from detalles_pacientes_estudios_completos;
