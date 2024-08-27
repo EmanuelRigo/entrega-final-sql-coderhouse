@@ -40,7 +40,7 @@ GROUP BY
 ORDER BY 
     p.fecha_de_pago DESC, p.tipo;
 
- CREATE VIEW detalles_pacientes_estudios_completos AS
+CREATE OR REPLACE VIEW detalles_pacientes_estudios AS
 SELECT 
     p.dni AS dni_paciente,
     p.nombre AS nombre_paciente,
@@ -48,7 +48,8 @@ SELECT
     p.telefono AS telefono_paciente,
     t.fecha_y_hora AS fecha_turno,
     e.nombre AS nombre_estudio,
-    r.id_resultado
+    r.id_resultado,
+    IF(r.completo = TRUE, 'Completo', 'Incompleto') AS estado_resultado
 FROM 
     paciente p
 JOIN 
@@ -58,10 +59,28 @@ JOIN
 JOIN 
     estudio e ON te.estudio = e.nombre
 LEFT JOIN 
-    resultado r ON r.id_resultado = t.id_turno
+    resultado r ON r.id_resultado = te.turno_estudio;
+
+
+CREATE VIEW turnos_sin_resultado AS
+SELECT 
+    t.id_turno,
+    t.fecha_y_hora,
+    p.dni AS dni_paciente,
+    p.nombre AS nombre_paciente,
+    p.apellido AS apellido_paciente
+FROM 
+    turno t
+JOIN 
+    paciente p ON t.dni_paciente = p.dni
+LEFT JOIN 
+    resultado r ON t.id_turno = r.id_resultado
 WHERE 
-    r.completo = TRUE;
+    r.id_resultado IS NULL;
+   
+select * from turnos_sin_resultado;
+
 
   
 
-select * from detalles_pacientes_estudios_completos;
+select * from detalles_pacientes_estudios;
