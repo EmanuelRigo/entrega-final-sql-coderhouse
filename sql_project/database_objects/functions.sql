@@ -1,5 +1,8 @@
+-- FUNCIONES
+
 USE laboratorio_coderhouse;
 
+-- FUNCION PARA OBTENER EL ULTIMO RESULTADO
 
 DROP FUNCTION IF EXISTS obtener_ultimo_resultado;
 
@@ -22,16 +25,13 @@ BEGIN
 
 END //
 
-
 DELIMITER ;
 
-USE laboratorio_coderhouse;
 
+-- FUNCION PARA SABER CUANTOS ESTUDIOS REALIZO UN BIOQUIMICO
 
 DROP FUNCTION IF EXISTS total_estudios_bioquimico;
 DELIMITER //
-
-
 
 CREATE FUNCTION total_estudios_bioquimico(bioquimico_legajo INT)
 RETURNS INT
@@ -49,7 +49,7 @@ END //
 DELIMITER ;
 
 
-
+--FUNCION PARA SABER CUAL FUE EL LABORATORIO QUE MAS FACTURO
 DROP FUNCTION IF EXISTS laboratorio_que_mas_facturo;
 DELIMITER //
 
@@ -74,8 +74,11 @@ DELIMITER ;
 
 
 
+-- PRUEBAS
+
+select laboratorio_que_mas_facturo();
+
 select total_estudios_bioquimico(3);
 
 
 select obtener_ultimo_resultado(12345678);
-

@@ -101,17 +101,20 @@ CREATE TABLE
 
 CREATE TABLE
 	talon (
+		numero_talon INT AUTO_INCREMENT PRIMARY KEY,
 		id_turno INT NOT NULL,
 		id_laboratorio INT NOT NULL,
 		id_recepcionista INT NOT NULL,
 		id_pago INT NOT NULL
 	);
 
-CREATE TABLE resultado (
+drop table if exists resultado;
+cREATE TABLE resultado (
     id_resultado VARCHAR(105) PRIMARY KEY,
     sucursal ENUM ('Flores', 'San Justo', 'Caballito'),
     completo BOOLEAN DEFAULT FALSE,
     id_bioquimico INT,
+    id_tecnico INT,
     fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (id_bioquimico) REFERENCES bioquimico(legajo)
 );
@@ -178,14 +181,4 @@ ALTER TABLE personal
 	(sucursal) REFERENCES laboratorio(sucursal);
 
 
-ALTER TABLE bioquimico
-ADD CONSTRAINT fk_personal_bioquimico
-FOREIGN KEY (legajo) REFERENCES personal(legajo);
 
-ALTER TABLE tecnico
-ADD CONSTRAINT fk_personal_tecnico
-FOREIGN KEY (legajo) REFERENCES personal(legajo);
-
-ALTER TABLE recepcionista
-ADD CONSTRAINT fk_personal_recepcionista
-FOREIGN KEY (legajo) REFERENCES personal(legajo);

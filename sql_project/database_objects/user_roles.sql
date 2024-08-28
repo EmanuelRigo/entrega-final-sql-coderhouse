@@ -1,5 +1,6 @@
 USE laboratorio_coderhouse;
 
+
 -- Crear roles
 CREATE ROLE 'dueño';
 GRANT INSERT, UPDATE, DELETE ON 

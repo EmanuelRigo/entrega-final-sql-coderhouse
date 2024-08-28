@@ -1,5 +1,8 @@
+-- VIEWS 
+
 USE laboratorio_coderhouse;
 
+-- VIEW PARA VER LOS TURNOS PENDIENTES
 CREATE VIEW turnos_pendientes AS
 SELECT 
     t.id_turno,
@@ -27,6 +30,8 @@ WHERE
 
 
 
+-- VIEW PARA VER LOS PAGOS(ROLE DUEÑO)
+   
 CREATE VIEW pagos_por_tipo_y_fecha AS
 SELECT 
     p.fecha_de_pago,
@@ -40,7 +45,36 @@ GROUP BY
 ORDER BY 
     p.fecha_de_pago DESC, p.tipo;
 
-CREATE OR REPLACE VIEW detalles_pacientes_estudios AS
+
+
+   
+ CREATE VIEW detalles_pacientes_estudios_completos AS
+SELECT 
+    p.dni AS dni_paciente,
+    p.nombre AS nombre_paciente,
+    p.apellido AS apellido_paciente,
+    p.telefono AS telefono_paciente,
+    t.fecha_y_hora AS fecha_turno,
+    e.nombre AS nombre_estudio,
+    r.id_resultado
+FROM 
+    paciente p
+JOIN 
+    turno t ON p.dni = t.dni_paciente
+JOIN 
+    turno_estudio te ON t.id_turno = te.id_turno
+JOIN 
+    estudio e ON te.estudio = e.nombre
+LEFT JOIN 
+    resultado r ON r.id_resultado = t.id_turno
+WHERE 
+    r.completo = TRUE;
+
+  
+
+ -- VIEW PARA VER LOS ESTUDIOS QUE SE HICIERON LOS PACIENTES
+
+   CREATE OR REPLACE VIEW detalles_pacientes_estudios AS
 SELECT 
     p.dni AS dni_paciente,
     p.nombre AS nombre_paciente,
@@ -61,6 +95,12 @@ JOIN
 LEFT JOIN 
     resultado r ON r.id_resultado = te.turno_estudio;
 
+select * from detalles_pacientes_estudios;
+
+select * from pagos_por_tipo_y_fecha;
+  
+
+-- VIEW PARA VER LOS TURNOS SIN RESULTADO
 
 CREATE VIEW turnos_sin_resultado AS
 SELECT 
@@ -80,7 +120,6 @@ WHERE
    
 select * from turnos_sin_resultado;
 
+   
 
-  
 
-select * from detalles_pacientes_estudios;

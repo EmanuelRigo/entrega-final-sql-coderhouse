@@ -1,4 +1,8 @@
-use laboratorio_coderhouse;
+-- TRIGGERS
+
+USE laboratorio_coderhouse;
+
+-- TRIGGERS PARA QUE INSERTE ANTES EN LA TABLA PERSONAL
 
 DELIMITER //
 
@@ -55,7 +59,7 @@ END //
 DELIMITER ;
 
 
--- trigger turno_estudio
+-- TRIGGER UNIFICA TURNO_ESTUDIO
 
 DELIMITER //
 

@@ -20,7 +20,6 @@ Los objetivos específicos del sistema son:
 Antes de la implementación de este sistema, el laboratorio enfrentaba varios problemas que afectaban la calidad del servicio y la eficiencia operativa:
 
 1. **Gestión Manual de Información**: La administración de turnos, estudios y resultados se realizaba manualmente, lo que generaba errores en la transcripción y pérdida de información.
-   
 2. **Acceso a Información**: Los diferentes roles dentro del laboratorio no tenían un acceso centralizado y seguro a la información necesaria para sus funciones, lo que complicaba la toma de decisiones y la coordinación entre el personal.
 
 3. **Falta de Seguridad en los Datos**: La ausencia de controles adecuados para el acceso a la información sensible de los pacientes generaba riesgos de privacidad y confidencialidad.
@@ -40,11 +39,6 @@ El modelo de negocio del laboratorio se basa en la prestación de servicios clí
 4. **Seguridad y Control de Accesos**: Implementa un sistema de roles y permisos que garantiza que cada miembro del personal tenga acceso únicamente a la información necesaria para sus funciones, protegiendo así la confidencialidad de los datos sensibles.
 
 ---
-
-
-
-
-
 
 # Base de Datos: `peliculas_coderhouse`
 
