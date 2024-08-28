@@ -107,14 +107,14 @@ CREATE TABLE
 		id_pago INT NOT NULL
 	);
 
-CREATE TABLE 
-	resultado (
-		id_resultado VARCHAR(105) PRIMARY KEY,
-		sucursal ENUM ('Flores', 'San Justo', 'Caballito'),
-		completo BOOLEAN DEFAULT FALSE,
-		id_bioquimico INT,
-        FOREIGN KEY (id_bioquimico) REFERENCES bioquimico(legajo)
-	);
+CREATE TABLE resultado (
+    id_resultado VARCHAR(105) PRIMARY KEY,
+    sucursal ENUM ('Flores', 'San Justo', 'Caballito'),
+    completo BOOLEAN DEFAULT FALSE,
+    id_bioquimico INT,
+    fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_bioquimico) REFERENCES bioquimico(legajo)
+);
 
 CREATE TABLE pago (
     id_pago INT AUTO_INCREMENT PRIMARY KEY,

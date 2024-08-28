@@ -101,6 +101,28 @@ END //
 DELIMITER ;
 
 
+drop procedure if exists generar_resultado;
+
+DELIMITER //
+
+CREATE PROCEDURE generar_resultado (
+    IN p_turno_estudio VARCHAR(105),
+    IN p_legajo_tecnico INT,
+    in p_sucursal ENUM ('Flores', 'San Justo', 'Caballito')
+    )
+BEGIN
+    IF EXISTS (SELECT 1 FROM turno_estudio WHERE turno_estudio = p_turno_estudio) THEN
+        INSERT INTO resultado (id_resultado, id_tecnico, fecha_creacion, sucursal)
+        VALUES (p_turno_estudio, p_legajo_tecnico, CURRENT_TIMESTAMP, p_sucursal);
+    ELSE
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El turno_estudio no existe.';
+    END IF;
+END //
+
+DELIMITER ;
+
+
+
 
 select * from recepcionista;
 select * from estudio;

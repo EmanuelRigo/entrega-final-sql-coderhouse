@@ -1,4 +1,52 @@
-﻿# Base de Datos: `peliculas_coderhouse`
+﻿# Laboratorio Coderhouse
+
+## Introducción
+
+Diseñado para optimizar la gestión de turnos, estudios, personal y resultados de pacientes. Este sistema es utilizado por diversos roles dentro del laboratorio, como dueños, recepcionistas, técnicos y bioquímicos, cada uno con diferentes niveles de acceso y permisos sobre la base de datos.
+
+## Objetivo
+
+El objetivo principal de este sistema de base de datos es mejorar la eficiencia operativa del laboratorio, asegurando un manejo adecuado de los datos relacionados con pacientes, estudios, pagos y resultados. Además, busca proporcionar un control adecuado sobre los accesos y permisos, garantizando la seguridad y confidencialidad de la información.
+
+Los objetivos específicos del sistema son:
+
+- Automatizar el registro de turnos y la asignación de estudios.
+- Gestionar la información de los pacientes y su historial clínico.
+- Controlar los procesos de facturación y pago de los estudios realizados.
+- Asegurar que cada rol dentro del laboratorio tenga acceso únicamente a la información pertinente para sus funciones.
+
+## Situación problemática
+
+Antes de la implementación de este sistema, el laboratorio enfrentaba varios problemas que afectaban la calidad del servicio y la eficiencia operativa:
+
+1. **Gestión Manual de Información**: La administración de turnos, estudios y resultados se realizaba manualmente, lo que generaba errores en la transcripción y pérdida de información.
+   
+2. **Acceso a Información**: Los diferentes roles dentro del laboratorio no tenían un acceso centralizado y seguro a la información necesaria para sus funciones, lo que complicaba la toma de decisiones y la coordinación entre el personal.
+
+3. **Falta de Seguridad en los Datos**: La ausencia de controles adecuados para el acceso a la información sensible de los pacientes generaba riesgos de privacidad y confidencialidad.
+
+4. **Incapacidad para Generar Reportes y Estadísticas**: No existía un sistema eficiente para generar reportes sobre el rendimiento del laboratorio, los estudios realizados, y la facturación, lo cual dificultaba la planificación estratégica y el control de calidad.
+
+## Modelo de negocio
+
+El modelo de negocio del laboratorio se basa en la prestación de servicios clínicos, ofreciendo una variedad de estudios de laboratorio a pacientes particulares y organizaciones. El sistema de base de datos apoya este modelo al proporcionar las siguientes funcionalidades clave:
+
+1. **Gestión de Turnos y Pacientes**: Permite la reserva y gestión de turnos de manera eficiente, asegurando que los pacientes sean atendidos oportunamente y que el personal esté debidamente informado de sus responsabilidades.
+
+2. **Registro de Estudios y Resultados**: Automatiza el registro de los estudios realizados y los resultados obtenidos, facilitando el seguimiento del estado de los estudios y asegurando que los resultados estén disponibles para los pacientes y el personal autorizado.
+
+3. **Control de Pagos y Facturación**: Gestiona los pagos realizados por los pacientes y genera registros de facturación que pueden ser utilizados para el control financiero del laboratorio.
+
+4. **Seguridad y Control de Accesos**: Implementa un sistema de roles y permisos que garantiza que cada miembro del personal tenga acceso únicamente a la información necesaria para sus funciones, protegiendo así la confidencialidad de los datos sensibles.
+
+---
+
+
+
+
+
+
+# Base de Datos: `peliculas_coderhouse`
 
 Este archivo SQL crea y estructura una base de datos llamada `peliculas_coderhouse` para almacenar información sobre películas, directores, actores, estudios, premios Oscar y países. A continuación se detallan las tablas, sus campos y las relaciones entre ellas.
 

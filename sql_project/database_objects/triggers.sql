@@ -71,20 +71,20 @@ DELIMITER ;
 
 -- trigger generar resultado
 
-DELIMITER //
+-- DELIMITER //
 
-CREATE TRIGGER after_insert_turno_estudio
-AFTER INSERT ON turno_estudio
-FOR EACH ROW
-BEGIN
-    DECLARE v_resultado_id VARCHAR(105);
+-- CREATE TRIGGER after_insert_turno_estudio
+-- AFTER INSERT ON turno_estudio
+-- FOR EACH ROW
+-- BEGIN
+--     DECLARE v_resultado_id VARCHAR(105);
  
-    SET v_resultado_id = NEW.TURNO_ESTUDIO;
+--     SET v_resultado_id = NEW.TURNO_ESTUDIO;
     
-    INSERT INTO resultado (id_resultado, completo)
-    VALUES (v_resultado_id, FALSE); 
-END //
+--     INSERT INTO resultado (id_resultado, completo)
+--     VALUES (v_resultado_id, FALSE); 
+-- END //
 
-DELIMITER ;
+-- DELIMITER ;
 
 
