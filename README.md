@@ -38,7 +38,136 @@ El modelo de negocio del laboratorio se basa en la prestación de servicios clí
 
 4. **Seguridad y Control de Accesos**: Implementa un sistema de roles y permisos que garantiza que cada miembro del personal tenga acceso únicamente a la información necesaria para sus funciones, protegiendo así la confidencialidad de los datos sensibles.
 
+# Listado de Tablas con Descripción de Estructura
+
+## 1. Tabla: `dueño`
+
+- **dni**: INT, PRIMARY KEY, Documento Nacional de Identidad
+- **nombre**: VARCHAR(80), Nombre del dueño
+- **apellido**: VARCHAR(80), Apellido del dueño
+
+## 2. Tabla: `laboratorio`
+
+- **id_laboratorio**: INT, PRIMARY KEY, AUTO_INCREMENT, Identificador del laboratorio
+- **sucursal**: VARCHAR(30), UNIQUE, Nombre de la sucursal
+- **id_dueño**: INT, NOT NULL, DEFAULT 15421745, FOREIGN KEY, DNI del dueño del laboratorio
+- **telefono**: VARCHAR(15), Teléfono de contacto del laboratorio
+
+## 3. Tabla: `bioquimico`
+
+- **legajo**: INT, PRIMARY KEY, Identificador del bioquímico
+- **dni**: INT, NOT NULL, Documento Nacional de Identidad
+- **nombre**: VARCHAR(80), NOT NULL, Nombre del bioquímico
+- **apellido**: VARCHAR(80), Apellido del bioquímico
+- **fecha_de_nacimiento**: DATE, Fecha de nacimiento
+- **telefono**: VARCHAR(15), Teléfono del bioquímico
+- **sucursal**: ENUM('Flores', 'San Justo', 'Caballito'), Sucursal donde trabaja
+- **matricula**: INT, UNIQUE, NOT NULL, Número de matrícula profesional
+- **email**: VARCHAR(100), Correo electrónico
+
+## 4. Tabla: `tecnico`
+
+- **legajo**: INT, PRIMARY KEY, Identificador del técnico
+- **dni**: INT, UNIQUE, NOT NULL, Documento Nacional de Identidad
+- **nombre**: VARCHAR(80), NOT NULL, Nombre del técnico
+- **apellido**: VARCHAR(80), Apellido del técnico
+- **fecha_de_nacimiento**: DATE, Fecha de nacimiento
+- **telefono**: VARCHAR(15), Teléfono del técnico
+- **sucursal**: ENUM('Flores', 'San Justo', 'Caballito'), Sucursal donde trabaja
+- **matricula**: INT, UNIQUE, NOT NULL, Número de matrícula profesional
+- **email**: VARCHAR(100), Correo electrónico
+
+## 5. Tabla: `recepcionista`
+
+- **legajo**: INT, PRIMARY KEY, Identificador del recepcionista
+- **dni**: INT, UNIQUE, NOT NULL, Documento Nacional de Identidad
+- **nombre**: VARCHAR(80), NOT NULL, Nombre del recepcionista
+- **apellido**: VARCHAR(80), Apellido del recepcionista
+- **fecha_de_nacimiento**: DATE, Fecha de nacimiento
+- **sucursal**: ENUM('Flores', 'San Justo', 'Caballito'), Sucursal donde trabaja
+- **telefono**: VARCHAR(15), Teléfono del recepcionista
+- **email**: VARCHAR(100), Correo electrónico
+
+## 6. Tabla: `estudio`
+
+- **nombre**: VARCHAR(80), PRIMARY KEY, Nombre del estudio
+- **precio**: INT, NOT NULL, Precio del estudio
+
+## 7. Tabla: `paciente`
+
+- **dni**: INT, PRIMARY KEY, Documento Nacional de Identidad
+- **nombre**: VARCHAR(80), Nombre del paciente
+- **apellido**: VARCHAR(80), Apellido del paciente
+- **fecha_de_nacimiento**: DATE, Fecha de nacimiento
+- **telefono**: VARCHAR(15), Teléfono del paciente
+- **domicilio**: VARCHAR(150), Dirección del paciente
+- **email**: VARCHAR(80), Correo electrónico
+
+## 8. Tabla: `personal`
+
+- **legajo**: INT, PRIMARY KEY, AUTO_INCREMENT, Identificador del personal
+- **nombre**: VARCHAR(80), Nombre del personal
+- **apellido**: VARCHAR(80), Apellido del personal
+- **fecha_de_nacimiento**: DATE, Fecha de nacimiento
+- **telefono**: VARCHAR(15), Teléfono del personal
+- **email**: VARCHAR(50), Correo electrónico
+- **dni**: INT, UNIQUE, NOT NULL, Documento Nacional de Identidad
+- **sucursal**: VARCHAR(30), Sucursal donde trabaja
+- **puesto**: VARCHAR(40), Puesto de trabajo
+- **matricula**: INT, Número de matrícula profesional
+
+## 9. Tabla: `talon`
+
+- **numero_talon**: INT, PRIMARY KEY, AUTO_INCREMENT, Número del talon
+- **id_turno**: INT, NOT NULL, FOREIGN KEY, Identificador del turno
+- **id_laboratorio**: INT, NOT NULL, FOREIGN KEY, Identificador del laboratorio
+- **id_recepcionista**: INT, NOT NULL, FOREIGN KEY, Identificador del recepcionista
+- **id_pago**: INT, NOT NULL, FOREIGN KEY, Identificador del pago
+
+## 10. Tabla: `resultado`
+
+- **id_resultado**: VARCHAR(105), PRIMARY KEY, Identificador del resultado
+- **sucursal**: ENUM('Flores', 'San Justo', 'Caballito'), Sucursal donde se generó el resultado
+- **completo**: BOOLEAN, DEFAULT FALSE, Estado del resultado (completo o no)
+- **id_bioquimico**: INT, FOREIGN KEY, Identificador del bioquímico
+- **id_tecnico**: INT, Identificador del técnico
+- **fecha_creacion**: DATETIME, DEFAULT CURRENT_TIMESTAMP, Fecha de creación del resultado
+
+## 11. Tabla: `pago`
+
+- **id_pago**: INT, PRIMARY KEY, AUTO_INCREMENT, Identificador del pago
+- **precio**: INT, NOT NULL, Precio del pago
+- **tipo**: ENUM('tarjeta debito', 'billetera virtual', 'efectivo'), Tipo de pago
+- **fecha_de_pago**: DATETIME, DEFAULT CURRENT_TIMESTAMP, Fecha de pago
+
+## 12. Tabla: `turno`
+
+- **id_turno**: INT, PRIMARY KEY, AUTO_INCREMENT, Identificador del turno
+- **fecha_y_hora**: DATETIME, NOT NULL, Fecha y hora del turno
+- **dni_paciente**: INT, NOT NULL, FOREIGN KEY, DNI del paciente
+- **id_tecnico**: INT, NOT NULL, FOREIGN KEY, Identificador del técnico
+
+## 13. Tabla: `turno_estudio`
+
+- **estudio**: VARCHAR(80), NOT NULL, FOREIGN KEY, Nombre del estudio
+- **id_turno**: INT, NOT NULL, FOREIGN KEY, Identificador del turno
+- **turno_estudio**: VARCHAR(105), PRIMARY KEY, Identificador compuesto de turno y estudio
+
 ---
+
+## Foreign Keys y tablas de muchos a muchos
+
+- `laboratorio`: tiene una clave foránea hacia la tabla `dueño`.
+- `resultado` está relacionada con las tablas `bioquimico` y `turno_estudio`.
+- `talon` está relacionada con las tablas `laboratorio`, `turno`, `recepcionista` y `pago`.
+- `turno` está relacionada con las tablas `paciente` y `tecnico`.
+- `personal` tiene una clave foránea hacia la tabla `laboratorio`.
+-
+- `turno_estudio` crea una relación de muchos a muchos entre las tablas `turno` y `estudio`.
+
+---
+
+<!-- asdasda/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
 # Base de Datos: `peliculas_coderhouse`
 

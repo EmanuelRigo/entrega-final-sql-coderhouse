@@ -108,15 +108,13 @@ CREATE TABLE
 		id_pago INT NOT NULL
 	);
 
-drop table if exists resultado;
-cREATE TABLE resultado (
+CREATE TABLE resultado (
     id_resultado VARCHAR(105) PRIMARY KEY,
     sucursal ENUM ('Flores', 'San Justo', 'Caballito'),
     completo BOOLEAN DEFAULT FALSE,
     id_bioquimico INT,
     id_tecnico INT,
-    fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (id_bioquimico) REFERENCES bioquimico(legajo)
+    fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE pago (
