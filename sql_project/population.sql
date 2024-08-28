@@ -4,14 +4,14 @@ USE laboratorio_coderhouse;
 
 SET GLOBAL local_infile = 1;
 
-LOAD DATA LOCAL INFILE 'C:/Users/emanu/Documents/Repositories/entrega-final-sql-coderhouse/sql_project/data/estudios.csv'
+LOAD DATA LOCAL INFILE '/sql_project/data/estudios.csv'
 INTO TABLE estudio
 FIELDS TERMINATED BY ',' ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS
 (nombre, precio);
 
-LOAD DATA LOCAL INFILE 'C:/Users/emanu/Documents/Repositories/entrega-final-sql-coderhouse/sql_project/data/pacientes.csv'
+LOAD DATA LOCAL INFILE '/sql_project/data/pacientes.csv'
 INTO TABLE paciente
 FIELDS TERMINATED BY ',' ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
