@@ -38,6 +38,14 @@ El modelo de negocio del laboratorio se basa en la prestación de servicios clí
 
 4. **Seguridad y Control de Accesos**: Implementa un sistema de roles y permisos que garantiza que cada miembro del personal tenga acceso únicamente a la información necesaria para sus funciones, protegiendo así la confidencialidad de los datos sensibles.
 
+## Diagrama en Dbeaver
+
+![DER-Wi-Fly-correcto.jpg](https://raw.githubusercontent.com/EmanuelRigo/entrega-final-sql-coderhouse/main/Diagrama_Dbeaver.png)
+
+## Diagrama de Draw.io
+
+![DER-Wi-Fly-correcto.jpg](https://raw.githubusercontent.com/EmanuelRigo/entrega-final-sql-coderhouse/main/Diagrama_drawio.png)
+
 # Listado de Tablas con Descripción de Estructura
 
 ## 1. Tabla: `dueño`
