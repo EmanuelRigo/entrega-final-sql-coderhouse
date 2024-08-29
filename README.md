@@ -44,11 +44,11 @@ El modelo de negocio del laboratorio se basa en la prestación de servicios clí
 
 ## Diagrama en Dbeaver
 
-![.](https://raw.githubusercontent.com/EmanuelRigo/entrega-final-sql-coderhouse/main/images/Diagrama_Dbeaver.png)
+![DER-Wi-Fly-correcto.jpg](https://raw.githubusercontent.com/EmanuelRigo/entrega-final-sql-coderhouse/main/images/Diagrama_Dbeaver.png)
 
 ## Diagrama de Draw.io
 
-![.](https://raw.githubusercontent.com/EmanuelRigo/entrega-final-sql-coderhouse/main/images/Diagrama_drawio.png)
+![DER-Wi-Fly-correcto.jpg](https://raw.githubusercontent.com/EmanuelRigo/entrega-final-sql-coderhouse/main/images/Diagrama_drawio.png)
 
 # Listado de Tablas con Descripción de Estructura
 
@@ -320,27 +320,27 @@ El modelo de negocio del laboratorio se basa en la prestación de servicios clí
 
 - #### En Github precionar en codespaces y luego en el simbolo de mas
 
-![.](https://raw.githubusercontent.com/EmanuelRigo/entrega-final-sql-coderhouse/main/images/paso%201.png)
+![DER-Wi-Fly-correcto.jpg](https://raw.githubusercontent.com/EmanuelRigo/entrega-final-sql-coderhouse/main/images/paso%201.png)
 
 - #### Luego en Codespaces; didactic doodle
 
-![.](https://raw.githubusercontent.com/EmanuelRigo/entrega-final-sql-coderhouse/main/images/paso%202.png)
+![DER-Wi-Fly-correcto.jpg](https://raw.githubusercontent.com/EmanuelRigo/entrega-final-sql-coderhouse/main/images/paso%202.png)
 
 - #### Luego en open in VS Descktop
 
-![.](https://raw.githubusercontent.com/EmanuelRigo/entrega-final-sql-coderhouse/main/images/paso%203.png)
+![DER-Wi-Fly-correcto.jpg](https://raw.githubusercontent.com/EmanuelRigo/entrega-final-sql-coderhouse/main/images/paso%203.png)
 
 - #### Una ves abierto VS y aceptado los permisos en la terminal escribir `docker compose up`
 
-![.](https://raw.githubusercontent.com/EmanuelRigo/entrega-final-sql-coderhouse/main/images/paso%204.png)
+![DER-Wi-Fly-correcto.jpg](https://raw.githubusercontent.com/EmanuelRigo/entrega-final-sql-coderhouse/main/images/paso%204.png)
 
 - #### Luego abrir otra termial bash y colocar `make` para que se ejecute el makefile
 
-![.](https://raw.githubusercontent.com/EmanuelRigo/entrega-final-sql-coderhouse/main/images/paso%204.png)
+![DER-Wi-Fly-correcto.jpg](https://raw.githubusercontent.com/EmanuelRigo/entrega-final-sql-coderhouse/main/images/paso%204.png)
 
 - #### Luego abrir DBeaver y generar una nueva coneccion mysql con la contraseña `Faber37`
 
-![.](https://raw.githubusercontent.com/EmanuelRigo/entrega-final-sql-coderhouse/main/images/paso%206.png)
+![DER-Wi-Fly-correcto.jpg](https://raw.githubusercontent.com/EmanuelRigo/entrega-final-sql-coderhouse/main/images/paso%206.png)
 
 # _Ya esta creada la base de datos_
 
@@ -373,7 +373,7 @@ En la terminal
 ## BackUp
 
 - Se encuentra un archivo llamado dump-lab_coder-202408291819.sql, el cual es el backup de la base de datos.
-- Para hacer la restauracion se puede hacer a traves de Dbear ![.](https://raw.githubusercontent.com/EmanuelRigo/entrega-final-sql-coderhouse/main/images/backup.png)
+- Para hacer la restauracion se puede hacer a traves de Dbear ![DER-Wi-Fly-correcto.jpg](https://raw.githubusercontent.com/EmanuelRigo/entrega-final-sql-coderhouse/main/images/backup.png)
 
 ## Herramientas y tecnologías usadas
 
@@ -386,5 +386,46 @@ En la terminal
 - **GitHub**
 
 -
+
+## Roles
+
+### Dueño (`duenio`)
+
+El rol de "Dueño" es el que tiene los mayores privilegios dentro del sistema. Las personas con este rol pueden:
+
+- **Insertar, actualizar y eliminar** información en las tablas de personal, bioquímico, técnico, recepcionista y laboratorio.
+- **Ejecutar funciones especiales** para obtener datos como el laboratorio que más facturó y el total de estudios realizados por un bioquímico.
+
+### 2. Recepcionista (`recepcionista`)
+
+El rol de "Recepcionista" está diseñado para gestionar y consultar la información relevante de los pacientes y sus estudios. Este rol permite:
+
+- **Insertar datos** en la tabla de talones.
+- **Insertar, actualizar y eliminar** información sobre los pacientes.
+- **Consultar información** sobre detalles de estudios de pacientes, turnos pendientes, y pagos por tipo y fecha.
+- **Ejecutar funciones** para obtener el último resultado de un paciente.
+
+### 3. Técnico (`tecnico`)
+
+El rol de "Técnico" se centra en la inserción de resultados de estudios. Las personas con este rol pueden:
+
+- **Insertar datos** en la tabla de resultados.
+- **Consultar información** sobre turnos sin resultado.
+
+### 4. Bioquímico (`bioquimico`)
+
+El rol de "Bioquímico" se especializa en la actualización de resultados y en la consulta de detalles específicos de los pacientes y sus estudios. Este rol permite:
+
+- **Actualizar datos** en la tabla de resultados.
+- **Consultar información** sobre detalles de estudios de pacientes.
+
+## Usuarios
+
+Se han creado cuatro usuarios, cada uno asignado a uno de los roles mencionados:
+
+- **Juan Dueño** (`juan_duenio@localhost`): Este usuario tiene el rol de "Dueño" y puede realizar todas las acciones disponibles en el sistema. `(password: labcoder)`
+- **Recepcionista1** (`recepcionista1@localhost`): Usuario asignado al rol de "Recepcionista", con acceso limitado a la gestión de pacientes y sus estudios. `(password: rec1)`
+- **Técnico1** (`tecnico1@localhost`): Usuario que actúa bajo el rol de "Técnico", con permisos para manejar los resultados de estudios. `(password: tec1)`
+- **Bioquímico1** (`bioquimico1@localhost`): Usuario con el rol de "Bioquímico", autorizado para actualizar resultados y consultar detalles de pacientes y estudios. `(password: bioquimico1)`
 
 ## Futuras líneas.
