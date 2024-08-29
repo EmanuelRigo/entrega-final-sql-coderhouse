@@ -30,7 +30,7 @@ WHERE
 
 
 
--- VIEW PARA VER LOS PAGOS(ROLE DUEÑO)
+-- VIEW PARA VER LOS PAGOS(ROLE duenio)
    
 CREATE VIEW pagos_por_tipo_y_fecha AS
 SELECT 

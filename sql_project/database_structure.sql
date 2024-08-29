@@ -13,7 +13,7 @@ USE laboratorio_coderhouse;
 
 -- TABLAS DIMENCIONALES
 CREATE TABLE 
-	dueño (
+	duenio (
 		dni INT PRIMARY KEY NOT NULL,
 		nombre VARCHAR(80),
 		apellido VARCHAR(80)
@@ -23,7 +23,7 @@ CREATE TABLE
 	laboratorio (
 		id_laboratorio INT PRIMARY KEY AUTO_INCREMENT,
 		sucursal VARCHAR(30) UNIQUE,
-		id_dueño INT NOT NULL DEFAULT 15421745,
+		id_duenio INT NOT NULL DEFAULT 15421745,
 		telefono VARCHAR(15)
 	);
 
@@ -148,8 +148,8 @@ CREATE TABLE turno_estudio (
 
 
 ALTER TABLE laboratorio
-	ADD CONSTRAINT fk_dueño FOREIGN KEY 
-	(id_dueño) REFERENCES dueño (dni);
+	ADD CONSTRAINT fk_duenio FOREIGN KEY 
+	(id_duenio) REFERENCES duenio (dni);
 
 ALTER TABLE resultado
 	ADD CONSTRAINT fk_bioquimico FOREIGN KEY

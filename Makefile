@@ -1,4 +1,3 @@
-#!make
 include .env
 
 SERVICE_NAME=mysql
@@ -21,38 +20,46 @@ all: info up objects
 
 info:
 	@echo "This is a project for $(DATABASE)"
-	
+	@echo "Using service $(SERVICE_NAME) on host $(HOST) and port $(PORT)"
+	@echo "User: $(USER)"
 
 up:
-	@echo "Create the instance of docker"
+	@echo "Creating Docker instance..."
 	docker compose -f $(DOCKER_COMPOSE_FILE) up -d --build
 
 	@echo "Waiting for MySQL to be ready..."
 	bash mysql_wait.sh
 
+	@echo "Importing database structure..."
+	docker exec -it $(SERVICE_NAME) mysql -u$(MYSQL_USER) -p$(PASSWORD) -e "source $(DATABASE_CREATION);"
 
-	@echo "Create the import and run de script"
-	docker exec -it $(SERVICE_NAME) mysql -u$(MYSQL_USER) -p$(PASSWORD)  -e "source $(DATABASE_CREATION);"
-	docker exec -it $(SERVICE_NAME) mysql -u$(MYSQL_USER) -p$(PASSWORD) --local-infile=1 -e "source $(DATABASE_POPULATION)"
+	@echo "Creating objects in database..."
+	@for file in $(FILES); do \
+		echo "Processing $$file and adding to the database: $(DATABASE)"; \
+		docker exec -it $(SERVICE_NAME) mysql -u$(MYSQL_USER) -p$(PASSWORD) -e "source ./sql_project/database_objects/$$file.sql"; \
+	done
+
+	@echo "Populating database..."
+	docker exec -it $(SERVICE_NAME) mysql -u$(MYSQL_USER) -p$(PASSWORD) --local-infile=1 -e "source $(DATABASE_POPULATION);"
 
 objects:
-	@echo "Create objects in database"
+	@echo "Creating objects in database..."
 	@for file in $(FILES); do \
-	    echo "Process $$file and add to the database: $(DATABASE_NAME)"; \
-	docker exec -it $(SERVICE_NAME)  mysql -u$(MYSQL_USER) -p$(PASSWORD) -e "source ./sql_project/database_objects/$$file.sql"; \
+		echo "Processing $$file and adding to the database: $(DATABASE)"; \
+		docker exec -it $(SERVICE_NAME) mysql -u$(MYSQL_USER) -p$(PASSWORD) -e "source ./sql_project/database_objects/$$file.sql"; \
 	done
 
 test-db:
-	@echo "Testing the tables"
-	docker exec -it $(SERVICE_NAME)  mysql -u$(MYSQL_USER) -p$(PASSWORD)  -e "source ./sql_project/check_db_objects.sql";
+	@echo "Testing the tables..."
+	docker exec -it $(SERVICE_NAME) mysql -u$(MYSQL_USER) -p$(PASSWORD) -e "source ./sql_project/check_db_objects.sql";
 
 access-db:
-	@echo "Access to db-client"
-	docker exec -it $(SERVICE_NAME) mysql -u$(MYSQL_USER) -p$(PASSWORD) 
-
+	@echo "Accessing the DB client..."
+	docker exec -it $(SERVICE_NAME) mysql -u$(MYSQL_USER) -p$(PASSWORD)
 
 down:
-	@echo "Remove the Database"
+	@echo "Removing the database..."
 	docker exec -it $(SERVICE_NAME) mysql -u$(MYSQL_USER) -p$(PASSWORD) --host $(HOST) --port $(PORT) -e "DROP DATABASE IF EXISTS $(DATABASE);"
-	@echo "Bye"
+	@echo "Stopping Docker containers..."
 	docker compose -f $(DOCKER_COMPOSE_FILE) down
+	@echo "Done."
