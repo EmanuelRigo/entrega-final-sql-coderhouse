@@ -1,4 +1,3 @@
-#!make
 include .env
 
 SERVICE_NAME=mysql
@@ -13,15 +12,14 @@ DOCKER_COMPOSE_FILE=./docker-compose.yml
 DATABASE_CREATION=./sql_project/database_structure.sql
 DATABASE_POPULATION=./sql_project/population.sql
 
-FILES=vistas funciones triggers stored_procedures user_roles
+FILES=views functions triggers store_procedures user_roles
 
 .PHONY: all up objects test-db access-db down
 
-all: info up objects
+all: info up objects populate
 
 info:
 	@echo "This is a project for $(DATABASE)"
-	
 
 up:
 	@echo "Create the instance of docker"
@@ -30,26 +28,27 @@ up:
 	@echo "Waiting for MySQL to be ready..."
 	bash mysql_wait.sh
 
-
-	@echo "Create the import and run de script"
-	docker exec -it $(SERVICE_NAME) mysql -u$(MYSQL_USER) -p$(PASSWORD)  -e "source $(DATABASE_CREATION);"
-	docker exec -it $(SERVICE_NAME) mysql -u$(MYSQL_USER) -p$(PASSWORD) --local-infile=1 -e "source $(DATABASE_POPULATION)"
+	@echo "Create the import and run the script"
+	docker exec -it $(SERVICE_NAME) mysql -u$(MYSQL_USER) -p$(PASSWORD) -e "source $(DATABASE_CREATION);"
 
 objects:
 	@echo "Create objects in database"
 	@for file in $(FILES); do \
-	    echo "Process $$file and add to the database: $(DATABASE_NAME)"; \
-	docker exec -it $(SERVICE_NAME)  mysql -u$(MYSQL_USER) -p$(PASSWORD) -e "source ./sql_project/database_objects/$$file.sql"; \
+	    echo "Process $$file and add to the database: $(DATABASE)"; \
+	    docker exec -it $(SERVICE_NAME) mysql -u$(MYSQL_USER) -p$(PASSWORD) -e "source ./sql_project/database_objects/$$file.sql"; \
 	done
+
+populate:
+	@echo "Populating the database"
+	docker exec -it $(SERVICE_NAME) mysql -u$(MYSQL_USER) -p$(PASSWORD) --local-infile=1 -e "source $(DATABASE_POPULATION)"
 
 test-db:
 	@echo "Testing the tables"
-	docker exec -it $(SERVICE_NAME)  mysql -u$(MYSQL_USER) -p$(PASSWORD)  -e "source ./sql_project/check_db_objects.sql";
+	docker exec -it $(SERVICE_NAME) mysql -u$(MYSQL_USER) -p$(PASSWORD) -e "source ./sql_project/check_db_objects.sql";
 
 access-db:
 	@echo "Access to db-client"
-	docker exec -it $(SERVICE_NAME) mysql -u$(MYSQL_USER) -p$(PASSWORD) 
-
+	docker exec -it $(SERVICE_NAME) mysql -u$(MYSQL_USER) -p$(PASSWORD)
 
 down:
 	@echo "Remove the Database"
