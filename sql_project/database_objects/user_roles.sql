@@ -10,7 +10,7 @@ GRANT INSERT, UPDATE, DELETE ON lab_coder.tecnico TO 'duenio';
 GRANT INSERT, UPDATE, DELETE ON lab_coder.recepcionista TO 'duenio';
 GRANT INSERT, UPDATE, DELETE ON lab_coder.laboratorio TO 'duenio';
 GRANT EXECUTE ON FUNCTION lab_coder.laboratorio_que_mas_facturo TO 'duenio';
-GRANT EXECUTE ON FUNCTION lab_coder.total_estudios_bioquimico; TO 'duenio';
+GRANT EXECUTE ON FUNCTION lab_coder.total_estudios_bioquimico TO 'duenio';
 
 DROP ROLE IF EXISTS 'recepcionista';
 CREATE ROLE 'recepcionista';
