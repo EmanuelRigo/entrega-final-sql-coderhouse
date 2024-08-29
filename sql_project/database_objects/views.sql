@@ -118,7 +118,7 @@ LEFT JOIN
 WHERE 
     r.id_resultado IS NULL;
    
-select * from turnos_sin_resultado;
+-- select * from turnos_sin_resultado;
 
    
 

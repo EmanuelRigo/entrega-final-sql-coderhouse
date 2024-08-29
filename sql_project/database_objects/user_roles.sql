@@ -10,8 +10,6 @@ GRANT INSERT, UPDATE, DELETE ON laboratorio_coderhouse.tecnico TO 'duenio';
 GRANT INSERT, UPDATE, DELETE ON laboratorio_coderhouse.recepcionista TO 'duenio';
 GRANT INSERT, UPDATE, DELETE ON laboratorio_coderhouse.laboratorio TO 'duenio';
 GRANT EXECUTE ON FUNCTION laboratorio_coderhouse.laboratorio_que_mas_facturo TO 'duenio';
-GRANT EXECUTE ON FUNCTION laboratorio_coderhouse.funcion2 TO 'duenio';
-GRANT EXECUTE ON FUNCTION laboratorio_coderhouse.funcion3 TO 'duenio';
 
 CREATE ROLE 'recepcionista';
 GRANT INSERT ON laboratorio_coderhouse.talon TO 'recepcionista';
