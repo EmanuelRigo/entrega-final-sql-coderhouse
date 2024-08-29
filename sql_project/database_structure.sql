@@ -1,11 +1,11 @@
 -- BORRAMOS DB POR SI EXISTE 
-DROP DATABASE IF EXISTS laboratorio_coderhouse;
+DROP DATABASE IF EXISTS lab_coder;
 
 -- CREAMOS DB
-CREATE DATABASE laboratorio_coderhouse;
+CREATE DATABASE lab_coder;
 
 -- USAMOS LA DB
-USE laboratorio_coderhouse;
+USE lab_coder;
 
 
 

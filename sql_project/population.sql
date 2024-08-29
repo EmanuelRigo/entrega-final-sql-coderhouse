@@ -1,6 +1,6 @@
 -- USAMOS LA DB
 
-USE laboratorio_coderhouse;
+USE lab_coder;
 
 SET GLOBAL local_infile = 1;
 

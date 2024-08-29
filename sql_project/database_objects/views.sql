@@ -1,6 +1,6 @@
 -- VIEWS 
 
-USE laboratorio_coderhouse;
+USE lab_coder;
 
 -- VIEW PARA VER LOS TURNOS PENDIENTES
 CREATE VIEW turnos_pendientes AS

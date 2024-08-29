@@ -1,4 +1,4 @@
-USE laboratorio_coderhouse;
+USE lab_coder;
 
 -- Exportar tablas a CSV
 

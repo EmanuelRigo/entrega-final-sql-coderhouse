@@ -1,6 +1,6 @@
 -- FUNCIONES
 
-USE laboratorio_coderhouse;
+USE lab_coder;
 
 -- FUNCION PARA OBTENER EL ULTIMO RESULTADO
 
