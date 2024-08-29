@@ -2,7 +2,7 @@
 
 ## Introducción
 
-Diseñado para optimizar la gestión de turnos, estudios, personal y resultados de pacientes. Este sistema es utilizado por diversos roles dentro del laboratorio, como duenios, recepcionistas, técnicos y bioquímicos, cada uno con diferentes niveles de acceso y permisos sobre la base de datos.
+Diseñado para optimizar la gestión de turnos, estudios, personal y resultados de pacientes. Este sistema es utilizado por diversos roles dentro del laboratorio, como dueños, recepcionistas, técnicos y bioquímicos, cada uno con diferentes niveles de acceso y permisos sobre la base de datos.
 
 ## Objetivo
 
@@ -48,20 +48,20 @@ El modelo de negocio del laboratorio se basa en la prestación de servicios clí
 
 # Listado de Tablas con Descripción de Estructura
 
-## 1. Tabla: `duenio`
+### 1. Tabla: `dueño`
 
 - **dni**: INT, PRIMARY KEY, Documento Nacional de Identidad
-- **nombre**: VARCHAR(80), Nombre del duenio
-- **apellido**: VARCHAR(80), Apellido del duenio
+- **nombre**: VARCHAR(80), Nombre del dueño
+- **apellido**: VARCHAR(80), Apellido del dueño
 
-## 2. Tabla: `laboratorio`
+### 2. Tabla: `laboratorio`
 
 - **id_laboratorio**: INT, PRIMARY KEY, AUTO_INCREMENT, Identificador del laboratorio
 - **sucursal**: VARCHAR(30), UNIQUE, Nombre de la sucursal
-- **id_duenio**: INT, NOT NULL, DEFAULT 15421745, FOREIGN KEY, DNI del duenio del laboratorio
+- **id_dueño**: INT, NOT NULL, DEFAULT 15421745, FOREIGN KEY, DNI del dueño del laboratorio
 - **telefono**: VARCHAR(15), Teléfono de contacto del laboratorio
 
-## 3. Tabla: `bioquimico`
+### 3. Tabla: `bioquimico`
 
 - **legajo**: INT, PRIMARY KEY, Identificador del bioquímico
 - **dni**: INT, NOT NULL, Documento Nacional de Identidad
@@ -73,7 +73,7 @@ El modelo de negocio del laboratorio se basa en la prestación de servicios clí
 - **matricula**: INT, UNIQUE, NOT NULL, Número de matrícula profesional
 - **email**: VARCHAR(100), Correo electrónico
 
-## 4. Tabla: `tecnico`
+### 4. Tabla: `tecnico`
 
 - **legajo**: INT, PRIMARY KEY, Identificador del técnico
 - **dni**: INT, UNIQUE, NOT NULL, Documento Nacional de Identidad
@@ -85,7 +85,7 @@ El modelo de negocio del laboratorio se basa en la prestación de servicios clí
 - **matricula**: INT, UNIQUE, NOT NULL, Número de matrícula profesional
 - **email**: VARCHAR(100), Correo electrónico
 
-## 5. Tabla: `recepcionista`
+### 5. Tabla: `recepcionista`
 
 - **legajo**: INT, PRIMARY KEY, Identificador del recepcionista
 - **dni**: INT, UNIQUE, NOT NULL, Documento Nacional de Identidad
@@ -96,12 +96,12 @@ El modelo de negocio del laboratorio se basa en la prestación de servicios clí
 - **telefono**: VARCHAR(15), Teléfono del recepcionista
 - **email**: VARCHAR(100), Correo electrónico
 
-## 6. Tabla: `estudio`
+### 6. Tabla: `estudio`
 
 - **nombre**: VARCHAR(80), PRIMARY KEY, Nombre del estudio
 - **precio**: INT, NOT NULL, Precio del estudio
 
-## 7. Tabla: `paciente`
+### 7. Tabla: `paciente`
 
 - **dni**: INT, PRIMARY KEY, Documento Nacional de Identidad
 - **nombre**: VARCHAR(80), Nombre del paciente
@@ -111,7 +111,7 @@ El modelo de negocio del laboratorio se basa en la prestación de servicios clí
 - **domicilio**: VARCHAR(150), Dirección del paciente
 - **email**: VARCHAR(80), Correo electrónico
 
-## 8. Tabla: `personal`
+### 8. Tabla: `personal`
 
 - **legajo**: INT, PRIMARY KEY, AUTO_INCREMENT, Identificador del personal
 - **nombre**: VARCHAR(80), Nombre del personal
@@ -124,7 +124,7 @@ El modelo de negocio del laboratorio se basa en la prestación de servicios clí
 - **puesto**: VARCHAR(40), Puesto de trabajo
 - **matricula**: INT, Número de matrícula profesional
 
-## 9. Tabla: `talon`
+### 9. Tabla: `talon`
 
 - **numero_talon**: INT, PRIMARY KEY, AUTO_INCREMENT, Número del talon
 - **id_turno**: INT, NOT NULL, FOREIGN KEY, Identificador del turno
@@ -132,7 +132,7 @@ El modelo de negocio del laboratorio se basa en la prestación de servicios clí
 - **id_recepcionista**: INT, NOT NULL, FOREIGN KEY, Identificador del recepcionista
 - **id_pago**: INT, NOT NULL, FOREIGN KEY, Identificador del pago
 
-## 10. Tabla: `resultado`
+### 10. Tabla: `resultado`
 
 - **id_resultado**: VARCHAR(105), PRIMARY KEY, Identificador del resultado
 - **sucursal**: ENUM('Flores', 'San Justo', 'Caballito'), Sucursal donde se generó el resultado
@@ -141,21 +141,21 @@ El modelo de negocio del laboratorio se basa en la prestación de servicios clí
 - **id_tecnico**: INT, Identificador del técnico
 - **fecha_creacion**: DATETIME, DEFAULT CURRENT_TIMESTAMP, Fecha de creación del resultado
 
-## 11. Tabla: `pago`
+### 11. Tabla: `pago`
 
 - **id_pago**: INT, PRIMARY KEY, AUTO_INCREMENT, Identificador del pago
 - **precio**: INT, NOT NULL, Precio del pago
 - **tipo**: ENUM('tarjeta debito', 'billetera virtual', 'efectivo'), Tipo de pago
 - **fecha_de_pago**: DATETIME, DEFAULT CURRENT_TIMESTAMP, Fecha de pago
 
-## 12. Tabla: `turno`
+### 12. Tabla: `turno`
 
 - **id_turno**: INT, PRIMARY KEY, AUTO_INCREMENT, Identificador del turno
 - **fecha_y_hora**: DATETIME, NOT NULL, Fecha y hora del turno
 - **dni_paciente**: INT, NOT NULL, FOREIGN KEY, DNI del paciente
 - **id_tecnico**: INT, NOT NULL, FOREIGN KEY, Identificador del técnico
 
-## 13. Tabla: `turno_estudio`
+### 13. Tabla: `turno_estudio`
 
 - **estudio**: VARCHAR(80), NOT NULL, FOREIGN KEY, Nombre del estudio
 - **id_turno**: INT, NOT NULL, FOREIGN KEY, Identificador del turno
@@ -163,9 +163,9 @@ El modelo de negocio del laboratorio se basa en la prestación de servicios clí
 
 ---
 
-## Foreign Keys y tablas de muchos a muchos
+### Foreign Keys y tablas de muchos a muchos
 
-- `laboratorio`: tiene una clave foránea hacia la tabla `duenio`.
+- `laboratorio`: tiene una clave foránea hacia la tabla `dueño`.
 - `resultado` está relacionada con las tablas `bioquimico` y `turno_estudio`.
 - `talon` está relacionada con las tablas `laboratorio`, `turno`, `recepcionista` y `pago`.
 - `turno` está relacionada con las tablas `paciente` y `tecnico`.
@@ -173,45 +173,121 @@ El modelo de negocio del laboratorio se basa en la prestación de servicios clí
 -
 - `turno_estudio` crea una relación de muchos a muchos entre las tablas `turno` y `estudio`.
 
-## Scripts de creación de cada objeto de la base de datos (opcion 1 manual).
+## Explicación de vistas, store procedures, funciones y triggers
+
+### Vistas
+
+1. **Vista: `turnos_pendientes`**
+
+   - Muestra todos los turnos que no tienen un resultado completo o que no tienen un resultado asociado (pendientes).
+
+2. **Vista: `pagos_por_tipo_y_fecha`**
+
+   - Proporciona un resumen de los pagos realizados agrupados por fecha y tipo de pago, mostrando la cantidad de pagos y el total pagado por cada combinación.
+
+3. **Vista: `detalles_pacientes_estudios_completos`**
+
+   - Muestra los detalles de los estudios realizados a pacientes cuyos resultados están completos.
+
+4. **Vista: `detalles_pacientes_estudios`**
+
+   - Ofrece un detalle completo de los estudios realizados a pacientes, indicando si el resultado está completo o incompleto.
+
+5. **Vista: `turnos_sin_resultado`**
+   - Lista todos los turnos que aún no tienen un resultado asociado.
+
+### Store Procedure
+
+1. **Store Procedure: `crear_talon`**
+
+   - **Propósito**: Crear un talón de estudio para un paciente. Verifica la existencia de laboratorio, recepcionista, paciente y técnico antes de crear registros en las tablas `pago`, `turno`, y `talon`. Luego, procesa los estudios asociados y calcula el precio total.
+
+2. **Store Procedure: `generar_resultado`**
+   - **Propósito**: Generar un resultado para un estudio basado en un turno de estudio específico. Inserta un nuevo registro en la tabla `resultado` si el turno de estudio existe; de lo contrario, devuelve un mensaje de error.
+   -
+
+### Funciones
+
+1. **Función: `obtener_ultimo_resultado`**
+
+   - **Propósito**: Obtener el ID del último resultado de laboratorio para un paciente específico. Utiliza el DNI del paciente para buscar el resultado más reciente basado en la fecha del turno.
+
+2. **Función: `total_estudios_bioquimico`**
+
+   - **Propósito**: Contar el número total de estudios realizados por un bioquímico específico. Utiliza el legajo del bioquímico para contar los registros en la tabla `resultado` asociados a ese bioquímico.
+
+3. **Función: `laboratorio_que_mas_facturo`**
+   - **Propósito**: Determinar el nombre del laboratorio que más ha facturado. Calcula la facturación total para cada laboratorio y retorna el nombre del laboratorio con la mayor facturación.
+
+### Triggers
+
+1. **Trigger: `before_insert_bioquimico`**
+
+   - **Propósito**: Antes de insertar un nuevo registro en la tabla `bioquimico`, inserta automáticamente un registro en la tabla `personal` con información relacionada. Luego, actualiza el campo `legajo` en `bioquimico` con el ID recién insertado en `personal`.
+
+2. **Trigger: `before_insert_tecnico`**
+
+   - **Propósito**: Antes de insertar un nuevo registro en la tabla `tecnico`, inserta automáticamente un registro en la tabla `personal` con información relacionada. Luego, actualiza el campo `legajo` en `tecnico` con el ID recién insertado en `personal`.
+
+3. **Trigger: `before_insert_recepcionista`**
+
+   - **Propósito**: Antes de insertar un nuevo registro en la tabla `recepcionista`, inserta automáticamente un registro en la tabla `personal` con información relacionada. Luego, actualiza el campo `legajo` en `recepcionista` con el ID recién insertado en `personal`.
+
+4. **Trigger: `before_insert_turno_estudio`**
+
+   - **Propósito**: Antes de insertar un nuevo registro en la tabla `turno_estudio`, genera un valor para el campo `turno_estudio` concatenando el `id_turno` y `estudio`. Este valor único se utiliza para identificar de manera específica cada estudio realizado durante un turno.
+
+5. **Trigger: `after_insert_turno_estudio`** (Comentado)
+   - **Propósito**: Después de insertar un nuevo registro en la tabla `turno_estudio`, este trigger se utilizaría para insertar automáticamente un nuevo registro en la tabla `resultado` con el `id_resultado` correspondiente. Este trigger se ha comentado en el código actual y no está en uso ya que lo resolvi de otra manera, el tecnico ahora se encarga de cargaar el resultado.
+
+## Scripts de creación de cada objeto de la base de datos (opcion 1 consola).
+
+- #### En Github precionar en codespaces y luego en el simbolo de mas
+  ![DER-Wi-Fly-correcto.jpg](https://raw.githubusercontent.com/EmanuelRigo/entrega-final-sql-coderhouse/main/images/paso%201.png)
+- #### Luego en Codespaces; didactic doodle
+
+  ![DER-Wi-Fly-correcto.jpg](https://raw.githubusercontent.com/EmanuelRigo/entrega-final-sql-coderhouse/main/images/paso%202.png)
+
+- #### Luego en open in VS Descktop
+
+  ![DER-Wi-Fly-correcto.jpg](https://raw.githubusercontent.com/EmanuelRigo/entrega-final-sql-coderhouse/main/images/paso%203.png)
+
+- #### Una ves abierto VS y aceptado los permisos en la terminal escribir `docker compose up`
+
+  ![DER-Wi-Fly-correcto.jpg](https://raw.githubusercontent.com/EmanuelRigo/entrega-final-sql-coderhouse/main/images/paso%204.png)
+
+- #### Luego abrir otra termial bash y colocar `make` para que se ejecute el makefile
+
+  ![DER-Wi-Fly-correcto.jpg](https://raw.githubusercontent.com/EmanuelRigo/entrega-final-sql-coderhouse/main/images/paso%204.png)
+
+- #### Luego abrir DBeaver y generar una nueva coneccion mysql con la contraseña `Faber37`
+  ![DER-Wi-Fly-correcto.jpg](https://raw.githubusercontent.com/EmanuelRigo/entrega-final-sql-coderhouse/main/images/paso%206.png)
+
+# _Ya esta creada la base de datos_
+
+### En caso de este error
+
+- `1` el port puede ser el 3307
+- `2` colocar allowPublicKeyRetrieval en `true`
+
+## Scripts de creación de cada objeto de la base de datos (opcion 2 manual).
 
 - `1`: Crear la estructura ejecutando en Dbeaver el archivo database_structure.sql.
 
 - `2`: Ejecutar en Dbeaver el contenido de la carpeta database_objects, donde se encuentran los archivos con stored_procedures, triggers, vistas, funciones.
 
-## Scripts de inserción de datos.
+### Scripts de inserción de datos.
 
-- `3`: Ejecutar el archivo population.sql que se encuentra en la carpeta data.
+- `3`: Ejecutar los insert del archivo population.sql que se encuentra en la carpeta data e insertar los csv de la carpeta data a traves de `import data` en las tablas paciente y estudio.
 
 ## Informes generados en base a la información de la base
 
 ## Herramientas y tecnologías usadas
 
+- **DBeaver**
+- **Drawio**
+- **Visual Studio Code**
+- **GitHub**
+-
+
 ## Futuras líneas.
-
-### Pasos a seguir para levantar la DB
-
-- `3`: Traer datos de los paises desde el csv, skipeando (nom, iso2 y phone_code) que no se utilizaran
-- `4`: Luego ingresar uno por uno a traves de queries en este orden. pelicula -> actores -> director -> oscars
-- `5`: Hacer un check_db_objects.sql
-
-### Vistas
-
-- `1`: vista de actores que tengan peliculas en los 90
-- `2`: vista de las peliculas con mas oscars
-- `3`: vista de los paises con mas peliculas
-
-### Funciones
-
-- `1`: funcion para saver el actor que mas peliculas tiene un año
-- `2`: funcion para saber cual es el estudio con mejores peliculas en un año
-
-### Stored procedures
-
-- `1`: procedimiento que actualiza un actor cuando gana un oscar
-- `2`: procedimiento para crear una pelicula
-- `3`: procedimiento para crear un actor pero que si o si debe haber trabajado en una pelicula
-
-### Triggers
-
-- `1`: trigger que actualiza la lista de las mejores 5 peliculas segun sus oscars
