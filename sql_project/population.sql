@@ -1,6 +1,6 @@
 -- USAMOS LA DB
 
-USE laboratorio_coderhouse;
+USE lab_coder;
 
 SET GLOBAL local_infile = 1;
 
@@ -20,7 +20,7 @@ IGNORE 1 ROWS
 
 SHOW GLOBAL VARIABLES LIKE 'local_infile';
 
-INSERT INTO dueño 
+INSERT INTO duenio 
     (dni, nombre, apellido) VALUES 
         (15421745, 'juan', 'coderhouse');
 

@@ -1,6 +1,6 @@
 -- VIEWS 
 
-USE laboratorio_coderhouse;
+USE lab_coder;
 
 -- VIEW PARA VER LOS TURNOS PENDIENTES
 CREATE VIEW turnos_pendientes AS
@@ -30,7 +30,7 @@ WHERE
 
 
 
--- VIEW PARA VER LOS PAGOS(ROLE DUEÑO)
+-- VIEW PARA VER LOS PAGOS(ROLE duenio)
    
 CREATE VIEW pagos_por_tipo_y_fecha AS
 SELECT 
@@ -118,7 +118,7 @@ LEFT JOIN
 WHERE 
     r.id_resultado IS NULL;
    
-select * from turnos_sin_resultado;
+-- select * from turnos_sin_resultado;
 
    
 

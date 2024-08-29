@@ -1,6 +1,6 @@
 -- TRIGGERS
 
-USE laboratorio_coderhouse;
+USE lab_coder;
 
 -- TRIGGERS PARA QUE INSERTE ANTES EN LA TABLA PERSONAL
 

@@ -1,6 +1,6 @@
 -- FUNCIONES
 
-USE laboratorio_coderhouse;
+USE lab_coder;
 
 -- FUNCION PARA OBTENER EL ULTIMO RESULTADO
 
@@ -74,11 +74,11 @@ DELIMITER ;
 
 
 
--- PRUEBAS
+-- -- PRUEBAS
 
-select laboratorio_que_mas_facturo();
+-- select laboratorio_que_mas_facturo();
 
-select total_estudios_bioquimico(3);
+-- select total_estudios_bioquimico(3);
 
 
-select obtener_ultimo_resultado(12345678);
+-- select obtener_ultimo_resultado(12345678);

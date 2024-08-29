@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   mysql:
@@ -11,3 +11,6 @@ services:
       - ./sql_project:/sql_project
     ports:
       - "3306:3306"
+#LEVANTAR
+#DOCKER COMPOSE UP
+#docker container ls

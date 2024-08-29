@@ -2,7 +2,7 @@
 
 ## Introducción
 
-Diseñado para optimizar la gestión de turnos, estudios, personal y resultados de pacientes. Este sistema es utilizado por diversos roles dentro del laboratorio, como dueños, recepcionistas, técnicos y bioquímicos, cada uno con diferentes niveles de acceso y permisos sobre la base de datos.
+Diseñado para optimizar la gestión de turnos, estudios, personal y resultados de pacientes. Este sistema es utilizado por diversos roles dentro del laboratorio, como duenios, recepcionistas, técnicos y bioquímicos, cada uno con diferentes niveles de acceso y permisos sobre la base de datos.
 
 ## Objetivo
 
@@ -48,17 +48,17 @@ El modelo de negocio del laboratorio se basa en la prestación de servicios clí
 
 # Listado de Tablas con Descripción de Estructura
 
-## 1. Tabla: `dueño`
+## 1. Tabla: `duenio`
 
 - **dni**: INT, PRIMARY KEY, Documento Nacional de Identidad
-- **nombre**: VARCHAR(80), Nombre del dueño
-- **apellido**: VARCHAR(80), Apellido del dueño
+- **nombre**: VARCHAR(80), Nombre del duenio
+- **apellido**: VARCHAR(80), Apellido del duenio
 
 ## 2. Tabla: `laboratorio`
 
 - **id_laboratorio**: INT, PRIMARY KEY, AUTO_INCREMENT, Identificador del laboratorio
 - **sucursal**: VARCHAR(30), UNIQUE, Nombre de la sucursal
-- **id_dueño**: INT, NOT NULL, DEFAULT 15421745, FOREIGN KEY, DNI del dueño del laboratorio
+- **id_duenio**: INT, NOT NULL, DEFAULT 15421745, FOREIGN KEY, DNI del duenio del laboratorio
 - **telefono**: VARCHAR(15), Teléfono de contacto del laboratorio
 
 ## 3. Tabla: `bioquimico`
@@ -165,7 +165,7 @@ El modelo de negocio del laboratorio se basa en la prestación de servicios clí
 
 ## Foreign Keys y tablas de muchos a muchos
 
-- `laboratorio`: tiene una clave foránea hacia la tabla `dueño`.
+- `laboratorio`: tiene una clave foránea hacia la tabla `duenio`.
 - `resultado` está relacionada con las tablas `bioquimico` y `turno_estudio`.
 - `talon` está relacionada con las tablas `laboratorio`, `turno`, `recepcionista` y `pago`.
 - `turno` está relacionada con las tablas `paciente` y `tecnico`.

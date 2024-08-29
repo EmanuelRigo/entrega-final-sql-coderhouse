@@ -1,63 +1,49 @@
-USE laboratorio_coderhouse;
-
+USE lab_coder;
 
 -- Crear roles
-CREATE ROLE 'dueño';
-GRANT INSERT, UPDATE, DELETE ON 
-    laboratorio_coderhouse.personal, 
-    laboratorio_coderhouse.bioquimico, 
-    laboratorio_coderhouse.tecnico, 
-    laboratorio_coderhouse.recepcionista, 
-    laboratorio_coderhouse.laboratorio
-        TO 'dueño';
-GRANT EXECUTE ON FUNCTION 
-    laboratorio_coderhouse.laboratorio_que_mas_facturo TO 'dueño';
-GRANT EXECUTE ON FUNCTION 
-    laboratorio_coderhouse.funcion2 TO 'dueño';
-GRANT EXECUTE ON FUNCTION 
-    laboratorio_coderhouse.funcion3 TO 'dueño';
+DROP ROLE IF EXISTS 'duenio';
+CREATE ROLE 'duenio';
 
+GRANT INSERT, UPDATE, DELETE ON laboratorio_coderhouse.personal TO 'duenio';
+GRANT INSERT, UPDATE, DELETE ON laboratorio_coderhouse.bioquimico TO 'duenio';
+GRANT INSERT, UPDATE, DELETE ON laboratorio_coderhouse.tecnico TO 'duenio';
+GRANT INSERT, UPDATE, DELETE ON laboratorio_coderhouse.recepcionista TO 'duenio';
+GRANT INSERT, UPDATE, DELETE ON laboratorio_coderhouse.laboratorio TO 'duenio';
+GRANT EXECUTE ON FUNCTION lab_coder.laboratorio_que_mas_facturo TO 'duenio';
+
+DROP ROLE IF EXISTS 'recepcionista';
 CREATE ROLE 'recepcionista';
-GRANT INSERT ON 
-    laboratorio_coderhouse.talon 
-        TO 'recepcionista';
-GRANT INSERT, DELETE, UPDATE ON 
-    laboratorio_coderhouse.paciente 
-        TO 'recepcionista';
-GRANT SELECT ON 
-    laboratorio_coderhouse.detalles_pacientes_estudios,
-    laboratorio_coderhouse.turnos_pendientes,
-    laboratorio_coderhouse.pagos_por_tipo_y_fecha
-        TO 'recepcionista';
-GRANT EXECUTE ON FUNCTION 
-    laboratorio_coderhouse.obtener_ultimo_resultado
-        TO 'recepcionista';
+GRANT INSERT ON laboratorio_coderhouse.talon TO 'recepcionista';
+GRANT INSERT, DELETE, UPDATE ON laboratorio_coderhouse.paciente TO 'recepcionista';
+GRANT SELECT ON laboratorio_coderhouse.detalles_pacientes_estudios TO 'recepcionista';
+GRANT SELECT ON laboratorio_coderhouse.turnos_pendientes TO 'recepcionista';
+GRANT SELECT ON laboratorio_coderhouse.pagos_por_tipo_y_fecha TO 'recepcionista';
+GRANT EXECUTE ON FUNCTION laboratorio_coderhouse.obtener_ultimo_resultado TO 'recepcionista';
 
+DROP ROLE IF EXISTS 'tecnico';
 CREATE ROLE 'tecnico';
-GRANT INSERT ON 
-    laboratorio_coderhouse.resultado 
-        TO 'tecnico';
-GRANT SELECT ON
-    laboratorio_coderhouse.turnos_sin_resultado
-        TO 'tecnico';
+GRANT INSERT ON lab_coder.resultado TO 'tecnico';
+GRANT SELECT ON lab_coder.turnos_sin_resultado TO 'tecnico';
 
+DROP ROLE IF EXISTS 'bioquimico';
 CREATE ROLE 'bioquimico';
-GRANT UPDATE ON 
-    laboratorio_coderhouse.resultado 
-        TO 'bioquimico';
-GRANT SELECT ON 
-    laboratorio_coderhouse.detalles_pacientes_estudios 
-        TO 'bioquimico';
+GRANT UPDATE ON lab_coder.resultado TO 'bioquimico';
+GRANT SELECT ON lab_coder.detalles_pacientes_estudios TO 'bioquimico';
 
 -- Crear usuarios
-CREATE USER 'juan_dueño'@'localhost' IDENTIFIED BY 'labcoder';
+DROP USER IF EXISTS 'juan_duenio'@'localhost';
+DROP USER IF EXISTS 'recepcionista1'@'localhost';
+DROP USER IF EXISTS 'tecnico1'@'localhost';
+DROP USER IF EXISTS 'bioquimico1'@'localhost';
+
+CREATE USER 'juan_duenio'@'localhost' IDENTIFIED BY 'labcoder';
 CREATE USER 'recepcionista1'@'localhost' IDENTIFIED BY 'rec1';
 CREATE USER 'tecnico1'@'localhost' IDENTIFIED BY 'tec1';
 CREATE USER 'bioquimico1'@'localhost' IDENTIFIED BY 'bioquimico1';
 
 -- Asignar roles a los usuarios
-GRANT 'dueño' TO 'juan_dueño'@'localhost';
-SET DEFAULT ROLE 'dueño' TO 'juan_dueño'@'localhost';
+GRANT 'duenio' TO 'juan_duenio'@'localhost';
+SET DEFAULT ROLE 'duenio' TO 'juan_duenio'@'localhost';
 
 GRANT 'recepcionista' TO 'recepcionista1'@'localhost';
 SET DEFAULT ROLE 'recepcionista' TO 'recepcionista1'@'localhost';
