@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
 --
--- Host: localhost    Database: lab_coderhouse
+-- Host: localhost    Database: lab_coder
 -- ------------------------------------------------------
 -- Server version	9.0.1
 
@@ -576,7 +576,7 @@ SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = @saved_cs_client;
 
 --
--- Dumping routines for database 'lab_coderhouse'
+-- Dumping routines for database 'lab_coder'
 --
 /*!50003 DROP FUNCTION IF EXISTS `laboratorio_que_mas_facturo` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
