@@ -76,3 +76,16 @@ down:
 	@echo "Stopping Docker containers..."
 	docker compose -f $(DOCKER_COMPOSE_FILE) down
 	@echo "Done."
+
+backup:
+	@echo "Creating backup ..."
+	docker exec $(SERVICE_NAME) sh -c 'mysqldump -u${USER} -p${PASSWORD} --host $(HOST) --port 3306 --routines --databases $(DATABASE) > ./backup_lab_coder.sql'
+	cd sql_project && mkdir dump
+	docker cp $(SERVICE_NAME):/backup_lab_coder ./sql_project/dump/backup_lab_coder.sql
+
+
+export:
+
+	@echo "Exporting tables to CSV files"
+	cd sql_project && mkdir export_csv
+	docker exec -it $(SERVICE_NAME) mysql -u$(USER) -p$(PASSWORD) -e "source /sql_project/export.sql";

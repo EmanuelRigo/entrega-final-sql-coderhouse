@@ -1,6 +1,6 @@
 -- QUERIES PARA VERIFICAR LAS CREACIONES Y CHEQUEAR DE QUE FUE EXITOSA LA CREACION DE CADA UNA
 
-USE peliculas_coderhouse;
+USE lab_coder;
 
 SELECT 
     TABLE_NAME, 
@@ -8,7 +8,7 @@ SELECT
 FROM 
     INFORMATION_SCHEMA.TABLES
 WHERE 
-    TABLE_SCHEMA = 'peliculas_coderhouse';
+    TABLE_SCHEMA = 'lab_coder';
 
 
 -- VERIFICACION DE IMPORTACION
@@ -19,7 +19,7 @@ SELECT
 FROM 
     information_schema.tables
 WHERE 
-    table_schema = 'peliculas_coderhouse'
+    table_schema = 'lab_coder'
 ORDER BY 
     table_rows DESC;
 
@@ -31,7 +31,7 @@ SELECT
 FROM 
     INFORMATION_SCHEMA.TABLES
 WHERE 
-    TABLE_SCHEMA = 'peliculas_coderhouse'
+    TABLE_SCHEMA = 'lab_coder'
     AND TABLE_TYPE = 'VIEW'
 ORDER BY 
     TABLE_NAME;
@@ -56,7 +56,7 @@ SELECT
 FROM 
     INFORMATION_SCHEMA.ROUTINES
 WHERE 
-    ROUTINE_SCHEMA = 'peliculas_coderhouse'
+    ROUTINE_SCHEMA = 'lab_coder'
     AND ROUTINE_TYPE = 'PROCEDURE'
 ORDER BY 
     ROUTINE_NAME;
@@ -71,14 +71,8 @@ SELECT
 FROM 
     INFORMATION_SCHEMA.TRIGGERS
 WHERE 
-    TRIGGER_SCHEMA = 'peliculas_coderhouse'
+    TRIGGER_SCHEMA = 'lab_coder'
 ORDER BY 
     EVENT_OBJECT_TABLE, 
     ACTION_TIMING, 
     EVENT_MANIPULATION;
-
-
-SELECT * FROM peliculas_por_pais;
-SELECT * FROM view_peliculas_con_mas_oscars;
-SELECT * FROM view_actores_90;
-SELECT * FROM top_5_peliculas;
