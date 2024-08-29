@@ -79,13 +79,13 @@ down:
 
 backup:
 	@echo "Creating backup ..."
-	docker exec $(SERVICE_NAME) sh -c 'mysqldump -u${USER} -p${PASSWORD} --host $(HOST) --port 3306 --routines --databases $(DATABASE) > ./backup_lab_coder.sql'
-	cd sql_project && mkdir dump
-	docker cp $(SERVICE_NAME):/backup_lab_coder ./sql_project/dump/backup_lab_coder.sql
+	cd sql_project && mkdir -p dump
+	docker exec $(SERVICE_NAME) sh -c 'mysqldump -u$(MYSQL_USER) -p$(MYSQL_PASSWORD) --host $(HOST) --port 3306 --routines --databases $(DATABASE)' > ./sql_project/dump/backup_lab_coder.sql
+	@echo "Backup completed successfully."
 
 
-export:
+# export:
 
-	@echo "Exporting tables to CSV files"
-	cd sql_project && mkdir export_csv
-	docker exec -it $(SERVICE_NAME) mysql -u$(USER) -p$(PASSWORD) -e "source /sql_project/export.sql";
+# 	@echo "Exporting tables to CSV files"
+# 	cd sql_project && mkdir export_csv
+# 	docker exec -it $(SERVICE_NAME) mysql -u$(USER) -p$(PASSWORD) -e "source /sql_project/export.sql";

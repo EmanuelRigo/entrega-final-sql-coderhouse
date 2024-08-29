@@ -273,7 +273,6 @@ En la terminal
 - `make test-db` ver tablas.
 - `make access-db` acceder a la base de datos.
 - `make backup` realizar back-up.
-- `make export` hacer export de pacientes y personal.
 
 ### En caso de este error
 
