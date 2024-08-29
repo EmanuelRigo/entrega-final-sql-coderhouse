@@ -265,6 +265,16 @@ El modelo de negocio del laboratorio se basa en la prestación de servicios clí
 
 # _Ya esta creada la base de datos_
 
+### Correr con Bash
+
+En la terminal
+
+- `make` levantar toda la base
+- `make test-db` ver tablas.
+- `make access-db` acceder a la base de datos.
+- `make backup` realizar back-up.
+- `make export` hacer export de pacientes y personal.
+
 ### En caso de este error
 
 - `1` el port puede ser el 3307
