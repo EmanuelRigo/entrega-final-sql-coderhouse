@@ -4,21 +4,21 @@ USE lab_coder;
 DROP ROLE IF EXISTS 'duenio';
 CREATE ROLE 'duenio';
 
-GRANT INSERT, UPDATE, DELETE ON laboratorio_coderhouse.personal TO 'duenio';
-GRANT INSERT, UPDATE, DELETE ON laboratorio_coderhouse.bioquimico TO 'duenio';
-GRANT INSERT, UPDATE, DELETE ON laboratorio_coderhouse.tecnico TO 'duenio';
-GRANT INSERT, UPDATE, DELETE ON laboratorio_coderhouse.recepcionista TO 'duenio';
-GRANT INSERT, UPDATE, DELETE ON laboratorio_coderhouse.laboratorio TO 'duenio';
+GRANT INSERT, UPDATE, DELETE ON lab_coderhouse.personal TO 'duenio';
+GRANT INSERT, UPDATE, DELETE ON lab_coderhouse.bioquimico TO 'duenio';
+GRANT INSERT, UPDATE, DELETE ON lab_coderhouse.tecnico TO 'duenio';
+GRANT INSERT, UPDATE, DELETE ON lab_coderhouse.recepcionista TO 'duenio';
+GRANT INSERT, UPDATE, DELETE ON lab_coderhouse.laboratorio TO 'duenio';
 GRANT EXECUTE ON FUNCTION lab_coder.laboratorio_que_mas_facturo TO 'duenio';
 
 DROP ROLE IF EXISTS 'recepcionista';
 CREATE ROLE 'recepcionista';
-GRANT INSERT ON laboratorio_coderhouse.talon TO 'recepcionista';
-GRANT INSERT, DELETE, UPDATE ON laboratorio_coderhouse.paciente TO 'recepcionista';
-GRANT SELECT ON laboratorio_coderhouse.detalles_pacientes_estudios TO 'recepcionista';
-GRANT SELECT ON laboratorio_coderhouse.turnos_pendientes TO 'recepcionista';
-GRANT SELECT ON laboratorio_coderhouse.pagos_por_tipo_y_fecha TO 'recepcionista';
-GRANT EXECUTE ON FUNCTION laboratorio_coderhouse.obtener_ultimo_resultado TO 'recepcionista';
+GRANT INSERT ON lab_coderhouse.talon TO 'recepcionista';
+GRANT INSERT, DELETE, UPDATE ON lab_coderhouse.paciente TO 'recepcionista';
+GRANT SELECT ON lab_coderhouse.detalles_pacientes_estudios TO 'recepcionista';
+GRANT SELECT ON lab_coderhouse.turnos_pendientes TO 'recepcionista';
+GRANT SELECT ON lab_coderhouse.pagos_por_tipo_y_fecha TO 'recepcionista';
+GRANT EXECUTE ON FUNCTION lab_coderhouse.obtener_ultimo_resultado TO 'recepcionista';
 
 DROP ROLE IF EXISTS 'tecnico';
 CREATE ROLE 'tecnico';
