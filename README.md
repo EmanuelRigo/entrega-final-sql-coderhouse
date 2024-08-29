@@ -40,11 +40,11 @@ El modelo de negocio del laboratorio se basa en la prestación de servicios clí
 
 ## Diagrama en Dbeaver
 
-![DER-Wi-Fly-correcto.jpg](https://raw.githubusercontent.com/EmanuelRigo/entrega-final-sql-coderhouse/main/Diagrama_Dbeaver.png)
+![DER-Wi-Fly-correcto.jpg](https://raw.githubusercontent.com/EmanuelRigo/entrega-final-sql-coderhouse/main/images/Diagrama_Dbeaver.png)
 
 ## Diagrama de Draw.io
 
-![DER-Wi-Fly-correcto.jpg](https://raw.githubusercontent.com/EmanuelRigo/entrega-final-sql-coderhouse/main/Diagrama_drawio.png)
+![DER-Wi-Fly-correcto.jpg](https://raw.githubusercontent.com/EmanuelRigo/entrega-final-sql-coderhouse/main/images/Diagrama_drawio.png)
 
 # Listado de Tablas con Descripción de Estructura
 
