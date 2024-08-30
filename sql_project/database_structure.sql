@@ -63,7 +63,6 @@ CREATE TABLE
 		sucursal ENUM ('Flores', 'San Justo', 'Caballito'),
 		telefono VARCHAR(15),
 		email VARCHAR(100)
-
 	);
 
 CREATE TABLE

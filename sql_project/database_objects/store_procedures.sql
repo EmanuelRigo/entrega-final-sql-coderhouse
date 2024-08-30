@@ -121,25 +121,3 @@ DELIMITER ;
 
 
 
--- -----------------------
-
--- PRUEBAS 
-
--- select * from recepcionista;
--- select * from estudio;
--- select * from tecnico;
-
--- select * from pago;
--- select * from turno;
--- select * from turno_estudio;
--- select * from talon;
--- select * from personal;
--- select * from resultado;
-
--- select * from turno_estudio where id_turno like 1;
-
-
--- CALL crear_talon(1, 20, 12345678, 'Creatinina', 5, '2024-09-01 15:00:00', 'billetera virtual');
-
-
-
