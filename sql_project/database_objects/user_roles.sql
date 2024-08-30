@@ -28,8 +28,9 @@ GRANT SELECT ON lab_coder.turnos_sin_resultado TO 'tecnico';
 
 DROP ROLE IF EXISTS 'bioquimico';
 CREATE ROLE 'bioquimico';
-GRANT UPDATE ON lab_coder.resultado TO 'bioquimico';
 GRANT SELECT ON lab_coder.detalles_pacientes_estudios TO 'bioquimico';
+GRANT EXECUTE ON PROCEDURE lab_coder.actualizar_resultado TO 'bioqumico';
+
 
 -- Crear usuarios
 DROP USER IF EXISTS 'juan_duenio'@'localhost';

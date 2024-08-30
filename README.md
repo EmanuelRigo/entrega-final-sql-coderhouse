@@ -278,7 +278,9 @@ El modelo de negocio del laboratorio se basa en la prestación de servicios clí
 
 - **Propósito**: Generar un resultado para un estudio basado en un turno de estudio específico. Inserta un nuevo registro en la tabla `resultado` si el turno de estudio existe; de lo contrario, devuelve un mensaje de error.
 
--
+3.  **Store Procedure: `actualizar_resultado`**
+
+- **Propósito**: Actualiza un registro en la tabla `resultado` para un turno de estudio específico. Solo actualiza los campos `completo` y `id_bioquimico`. Si el turno de estudio no existe, devuelve un mensaje de error.
 
 ### Funciones
 
@@ -416,7 +418,7 @@ El rol de "Técnico" se centra en la inserción de resultados de estudios. Las p
 
 El rol de "Bioquímico" se especializa en la actualización de resultados y en la consulta de detalles específicos de los pacientes y sus estudios. Este rol permite:
 
-- **Actualizar datos** en la tabla de resultados.
+- **Actualizar datos** en la tabla de resultados con un procedure.
 - **Consultar información** sobre detalles de estudios de pacientes.
 
 ## Usuarios
@@ -475,6 +477,13 @@ SELECT * FROM talon;
 SELECT * FROM personal;
 SELECT * FROM  resultado;
 SELECT * FROM turnos_sin_resultado;
+
+
+-- actualizar resultado
+
+-- (id de resultado, legajo del bioqumico)
+-- ejemplo:
+CALL  actualizar_resultado('1_Creatinina', 4);
 
 -- views
 

@@ -118,6 +118,25 @@ END //
 
 DELIMITER ;
 
+-- PROCEDURE PARA ACTUALIZAR RESULTADO
+
+DROP PROCEDURE IF EXISTS actualizar_resultado;
+DELIMITER //
+
+CREATE PROCEDURE actualizar_resultado (
+    IN p_id_resultado VARCHAR(105),
+    IN p_id_bioquimico INT
+)
+BEGIN
+    UPDATE resultado
+    SET 
+        completo = TRUE,
+        id_bioquimico = p_id_bioquimico
+    WHERE id_resultado = p_id_resultado;
+END //
+
+DELIMITER ;
+
 
 
 
