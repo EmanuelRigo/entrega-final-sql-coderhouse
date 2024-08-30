@@ -435,21 +435,19 @@ Se han creado cuatro usuarios, cada uno asignado a uno de los roles mencionados:
 ```sql
 USE lab_coder;
 
-
-CALL crear_talon(1, 20, 12345678,
-
-'Creatinina', 5, '2024-09-01 15:00:00', 'billetera virtual');
-
-
+CALL crear_talon(1, 20, 12345678,'Creatinina', 5, '2024-09-01 15:00:00', 'billetera virtual');
 
 CALL crear_talon(1, 26, 10678901,
 'Anticuerpos Antinucleares,Calcio', 5, '2024-10-11 14:00:00', 'tarjeta debito');
 
-
+CALL crear_talon(1, 26, 12789012,
+'Amilasa,Calcio,Citoquímica', 8, '2024-10-11 14:30:00', 'tarjeta debito');
 
 CALL crear_talon(1, 26, 12789012,
 'Amilasa,Calcio,Citoquímica', 8, '2024-10-11 14:30:00', 'tarjeta debito');
 
+CALL crear_talon(1, 26, 12789012,
+'Transferrina', 8, '2024-10-14 14:45:00', 'tarjeta debito');
 
 
 INSERT INTO tecnico (dni, nombre, apellido, fecha_de_nacimiento, telefono, sucursal, matricula, email)
@@ -462,8 +460,8 @@ INSERT INTO recepcionista (dni, nombre, apellido, fecha_de_nacimiento, sucursal,
 VALUES (87654321, 'Luis', 'Martínez', '1982-03-10', 'San Justo', '654-321-1234', 'luis.martinez@example.com');
 
 CALL generar_resultado('1_Creatinina', 5, 'Flores');
-CALL generar_resultado('6_Creatinina', 7, 'Flores');
-CALL generar_resultado('7_Calcio', 5, 'Flores');
+CALL generar_resultado('2_Calcio', 7, 'Flores');
+CALL generar_resultado('3_Amilasa', 5, 'Flores');
 
 SELECT * FROM paciente;
 SELECT * FROM laboratorio;
@@ -475,8 +473,7 @@ SELECT * FROM turno;
 SELECT * FROM turno_estudio;
 SELECT * FROM talon;
 SELECT * FROM personal;
-SELECT * FROM  resultado;
-SELECT * FROM turnos_sin_resultado;
+SELECT * FROM resultado;
 
 
 -- actualizar resultado
@@ -498,6 +495,8 @@ SELECT * FROM turnos_sin_resultado;
 SELECT obtener_ultimo_resultado(12345678);
 SELECT total_estudios_bioquimico(4);
 SELECT laboratorio_que_mas_facturo();
+
+
 
 
 ```
