@@ -493,4 +493,11 @@ SELECT * FROM pagos_por_tipo_y_fecha;
 SELECT * FROM turnos_pendientes;
 SELECT * FROM turnos_sin_resultado;
 
+-- funciones
+
+SELECT obtener_ultimo_resultado(12345678);
+SELECT total_estudios_bioquimico(4);
+SELECT laboratorio_que_mas_facturo();
+
+
 ```
